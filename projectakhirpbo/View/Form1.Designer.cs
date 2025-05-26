@@ -41,8 +41,6 @@
             lbpassvalid = new Label();
             lbemail = new Label();
             lbtelepon = new Label();
-            checkedListBox1 = new CheckedListBox();
-            checkedListBox2 = new CheckedListBox();
             SuspendLayout();
             // 
             // tbusername
@@ -161,33 +159,12 @@
             lbtelepon.TabIndex = 12;
             lbtelepon.Text = "TELEPHONE";
             // 
-            // checkedListBox1
-            // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "afif 10 pax", "afif 5 pax", "jaki", "mario" });
-            checkedListBox1.Location = new Point(110, 79);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(150, 114);
-            checkedListBox1.TabIndex = 13;
-            checkedListBox1.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
-            // 
-            // checkedListBox2
-            // 
-            checkedListBox2.FormattingEnabled = true;
-            checkedListBox2.Items.AddRange(new object[] { "afif 10 pax", "afif 5 pax", "jaki", "mario" });
-            checkedListBox2.Location = new Point(380, 149);
-            checkedListBox2.Name = "checkedListBox2";
-            checkedListBox2.Size = new Size(150, 114);
-            checkedListBox2.TabIndex = 14;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Cuplikan_layar_2025_05_19_025439;
             ClientSize = new Size(1257, 517);
-            Controls.Add(checkedListBox2);
-            Controls.Add(checkedListBox1);
             Controls.Add(lbtelepon);
             Controls.Add(lbemail);
             Controls.Add(lbpassvalid);
@@ -222,7 +199,5 @@
         private Label lbpassvalid;
         private Label lbemail;
         private Label lbtelepon;
-        private CheckedListBox checkedListBox1;
-        private CheckedListBox checkedListBox2;
     }
 }

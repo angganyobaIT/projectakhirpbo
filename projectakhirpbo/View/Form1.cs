@@ -5,7 +5,7 @@ namespace projectakhirpbo
         public Form1()
         {
             InitializeComponent();
-            Console.WriteLine("HELLO WORLD")
+            //Console.WriteLine("HELLO WORLD")
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
