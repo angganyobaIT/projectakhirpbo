@@ -19,5 +19,22 @@ namespace projectakhirpbo
             login.Show();
             this.Hide();
         }
+
+        private void btndaftar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            login Login = new login();
+            Login.Show();
+            this.Hide();
+        }
     }
 }

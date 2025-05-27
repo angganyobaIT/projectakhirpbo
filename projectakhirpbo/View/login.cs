@@ -19,7 +19,19 @@ namespace projectakhirpbo
 
         private void login_Load(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkregister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            register Register = new register();
+            Register.Show();
+            this.Hide();
         }
     }
 }
