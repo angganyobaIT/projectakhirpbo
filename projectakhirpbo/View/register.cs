@@ -1,8 +1,8 @@
 namespace projectakhirpbo
 {
-    public partial class Form1 : Form
+    public partial class register : Form
     {
-        public Form1()
+        public register()
         {
             InitializeComponent();
             //Console.WriteLine("HELLO WORLD")
@@ -11,6 +11,13 @@ namespace projectakhirpbo
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btlogin_Click(object sender, EventArgs e)
+        {
+            login login = new login();
+            login.Show();
+            this.Hide();
         }
     }
 }
