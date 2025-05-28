@@ -12,19 +12,16 @@ namespace projectakhirpbo
         private static string localhost = "localhost";
         private static string port = "5432";
         private static string username = "postgres";
-        private static string password = "Postgresql31_";
-        private static string database = "pbo_finaltask";
+        private static string password = "chacha10";
+        private static string database = "PBO_PRO";
 
         private static NpgsqlConnection conn;
 
         public static NpgsqlConnection GetConnection()
         {
-            if (conn == null)
-            {
-                string connString = $"Host={localhost};Port={port};Username={username};Password={password};Database={database}";
-                conn = new NpgsqlConnection(connString);
-            }
-            return conn;
+            var connString =
+            $"Host={localhost};Port={port};Username={username};Password={password};Database={database}";
+            return new NpgsqlConnection(connString);
         }
 
         public static void CloseConnection()
