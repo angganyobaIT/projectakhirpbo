@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reservasi));
-            meja1 = new CheckBox();
-            meja2 = new CheckBox();
-            meja3 = new CheckBox();
-            meja4 = new CheckBox();
-            meja5 = new CheckBox();
-            meja6 = new CheckBox();
-            meja10 = new CheckBox();
-            meja9 = new CheckBox();
-            meja8 = new CheckBox();
-            meja7 = new CheckBox();
             btnback = new Button();
             dateTimePicker1 = new DateTimePicker();
             tb_namacustomer = new TextBox();
@@ -46,113 +36,9 @@
             jumlah_orang = new NumericUpDown();
             reserv_time = new ComboBox();
             lanjutkan = new Button();
-            Meja = new GroupBox();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)jumlah_orang).BeginInit();
-            Meja.SuspendLayout();
             SuspendLayout();
-            // 
-            // meja1
-            // 
-            meja1.BackColor = Color.Transparent;
-            meja1.CheckAlign = ContentAlignment.MiddleCenter;
-            meja1.Location = new Point(78, 61);
-            meja1.Name = "meja1";
-            meja1.Size = new Size(25, 25);
-            meja1.TabIndex = 0;
-            meja1.UseVisualStyleBackColor = false;
-            meja1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // meja2
-            // 
-            meja2.BackColor = Color.Transparent;
-            meja2.CheckAlign = ContentAlignment.MiddleCenter;
-            meja2.Location = new Point(78, 189);
-            meja2.Name = "meja2";
-            meja2.Size = new Size(25, 25);
-            meja2.TabIndex = 1;
-            meja2.UseVisualStyleBackColor = false;
-            // 
-            // meja3
-            // 
-            meja3.BackColor = Color.Transparent;
-            meja3.CheckAlign = ContentAlignment.MiddleCenter;
-            meja3.Location = new Point(78, 317);
-            meja3.Name = "meja3";
-            meja3.Size = new Size(25, 25);
-            meja3.TabIndex = 2;
-            meja3.UseVisualStyleBackColor = false;
-            meja3.CheckedChanged += checkBox3_CheckedChanged;
-            // 
-            // meja4
-            // 
-            meja4.BackColor = Color.Transparent;
-            meja4.CheckAlign = ContentAlignment.MiddleCenter;
-            meja4.Location = new Point(78, 445);
-            meja4.Name = "meja4";
-            meja4.Size = new Size(25, 25);
-            meja4.TabIndex = 3;
-            meja4.UseVisualStyleBackColor = false;
-            // 
-            // meja5
-            // 
-            meja5.BackColor = Color.Transparent;
-            meja5.CheckAlign = ContentAlignment.MiddleCenter;
-            meja5.Location = new Point(261, 317);
-            meja5.Name = "meja5";
-            meja5.Size = new Size(25, 25);
-            meja5.TabIndex = 4;
-            meja5.UseVisualStyleBackColor = false;
-            // 
-            // meja6
-            // 
-            meja6.BackColor = Color.Transparent;
-            meja6.CheckAlign = ContentAlignment.MiddleCenter;
-            meja6.Location = new Point(261, 445);
-            meja6.Name = "meja6";
-            meja6.Size = new Size(25, 25);
-            meja6.TabIndex = 5;
-            meja6.UseVisualStyleBackColor = false;
-            // 
-            // meja10
-            // 
-            meja10.BackColor = Color.Transparent;
-            meja10.CheckAlign = ContentAlignment.MiddleCenter;
-            meja10.Location = new Point(445, 61);
-            meja10.Name = "meja10";
-            meja10.Size = new Size(25, 25);
-            meja10.TabIndex = 6;
-            meja10.UseVisualStyleBackColor = false;
-            meja10.CheckedChanged += cbmeja10_CheckedChanged;
-            // 
-            // meja9
-            // 
-            meja9.BackColor = Color.Transparent;
-            meja9.CheckAlign = ContentAlignment.MiddleCenter;
-            meja9.Location = new Point(445, 189);
-            meja9.Name = "meja9";
-            meja9.Size = new Size(25, 25);
-            meja9.TabIndex = 7;
-            meja9.UseVisualStyleBackColor = false;
-            // 
-            // meja8
-            // 
-            meja8.BackColor = Color.Transparent;
-            meja8.CheckAlign = ContentAlignment.MiddleCenter;
-            meja8.Location = new Point(445, 317);
-            meja8.Name = "meja8";
-            meja8.Size = new Size(25, 25);
-            meja8.TabIndex = 8;
-            meja8.UseVisualStyleBackColor = false;
-            // 
-            // meja7
-            // 
-            meja7.BackColor = Color.Transparent;
-            meja7.CheckAlign = ContentAlignment.MiddleCenter;
-            meja7.Location = new Point(445, 445);
-            meja7.Name = "meja7";
-            meja7.Size = new Size(25, 25);
-            meja7.TabIndex = 9;
-            meja7.UseVisualStyleBackColor = false;
             // 
             // btnback
             // 
@@ -161,9 +47,9 @@
             btnback.BackgroundImageLayout = ImageLayout.Stretch;
             btnback.FlatStyle = FlatStyle.Popup;
             btnback.ForeColor = Color.Transparent;
-            btnback.Location = new Point(34, 973);
+            btnback.Location = new Point(36, 942);
             btnback.Name = "btnback";
-            btnback.Size = new Size(36, 32);
+            btnback.Size = new Size(41, 37);
             btnback.TabIndex = 10;
             btnback.UseVisualStyleBackColor = false;
             btnback.Click += btnback_Click;
@@ -220,43 +106,31 @@
             lanjutkan.BackgroundImage = (Image)resources.GetObject("lanjutkan.BackgroundImage");
             lanjutkan.BackgroundImageLayout = ImageLayout.Stretch;
             lanjutkan.FlatStyle = FlatStyle.Popup;
-            lanjutkan.Location = new Point(927, 815);
+            lanjutkan.Location = new Point(835, 850);
             lanjutkan.Name = "lanjutkan";
-            lanjutkan.Size = new Size(768, 63);
+            lanjutkan.Size = new Size(947, 80);
             lanjutkan.TabIndex = 30;
             lanjutkan.UseVisualStyleBackColor = false;
             lanjutkan.Click += lanjutkan_Click;
             // 
-            // Meja
+            // comboBox1
             // 
-            Meja.BackColor = Color.Transparent;
-            Meja.Controls.Add(meja7);
-            Meja.Controls.Add(meja8);
-            Meja.Controls.Add(meja9);
-            Meja.Controls.Add(meja10);
-            Meja.Controls.Add(meja6);
-            Meja.Controls.Add(meja5);
-            Meja.Controls.Add(meja4);
-            Meja.Controls.Add(meja3);
-            Meja.Controls.Add(meja2);
-            Meja.Controls.Add(meja1);
-            Meja.Location = new Point(92, 379);
-            Meja.Name = "Meja";
-            Meja.Size = new Size(505, 522);
-            Meja.TabIndex = 31;
-            Meja.TabStop = false;
-            Meja.Text = "Pilihan Meja";
-            Meja.Enter += Meja_Enter;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Indoor", "Outdoor" });
+            comboBox1.Location = new Point(141, 942);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(463, 28);
+            comboBox1.TabIndex = 32;
             // 
             // reservasi
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoValidate = AutoValidate.EnablePreventFocusChange;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1902, 1033);
-            Controls.Add(Meja);
+            Controls.Add(comboBox1);
             Controls.Add(lanjutkan);
             Controls.Add(reserv_time);
             Controls.Add(jumlah_orang);
@@ -270,23 +144,11 @@
             Text = "reservasi";
             Load += reservasi_Load;
             ((System.ComponentModel.ISupportInitialize)jumlah_orang).EndInit();
-            Meja.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private CheckBox meja1;
-        private CheckBox meja2;
-        private CheckBox meja3;
-        private CheckBox meja4;
-        private CheckBox meja5;
-        private CheckBox meja6;
-        private CheckBox meja10;
-        private CheckBox meja9;
-        private CheckBox meja8;
-        private CheckBox meja7;
         private Button btnback;
         private DateTimePicker dateTimePicker1;
         private TextBox tb_namacustomer;
@@ -294,6 +156,6 @@
         private NumericUpDown jumlah_orang;
         private ComboBox reserv_time;
         private Button lanjutkan;
-        private GroupBox Meja;
+        private ComboBox comboBox1;
     }
 }
