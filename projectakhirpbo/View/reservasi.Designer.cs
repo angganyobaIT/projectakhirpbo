@@ -117,15 +117,14 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Indoor", "Outdoor" });
-            comboBox1.Location = new Point(141, 942);
+            comboBox1.Location = new Point(141, 929);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(463, 28);
             comboBox1.TabIndex = 32;
             // 
             // reservasi
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.Inherit;
             AutoSize = true;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
@@ -141,7 +140,7 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "reservasi";
-            Text = "reservasi";
+            Text = "3";
             Load += reservasi_Load;
             ((System.ComponentModel.ISupportInitialize)jumlah_orang).EndInit();
             ResumeLayout(false);

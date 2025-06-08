@@ -85,25 +85,8 @@ namespace projectakhirpbo
                 return;
             }
 
-            // Simpan ke database
-            var newCustomer = new customer
-            {
-                username = tbusername.Text,
-                email = tbemail.Text,
-                password = tbpassword.Text
-            };
 
-            if (usercontroller.registeruser(newCustomer))
-            {
-                MessageBox.Show("Akun berhasil dibuat", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Homepage homepage = new Homepage();
-                homepage.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Gagal membuat akun.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+          
         }
 
 
