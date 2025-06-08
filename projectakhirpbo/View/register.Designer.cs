@@ -38,6 +38,8 @@
             tbemail = new TextBox();
             tbpassword = new TextBox();
             tbconfirmpass = new TextBox();
+            checkshow1 = new CheckBox();
+            checkshow2 = new CheckBox();
             SuspendLayout();
             // 
             // btlogin
@@ -67,6 +69,7 @@
             tbusername.Name = "tbusername";
             tbusername.Size = new Size(467, 20);
             tbusername.TabIndex = 8;
+            tbusername.TextChanged += tbusername_TextChanged;
             // 
             // btndaftar
             // 
@@ -75,7 +78,7 @@
             btndaftar.ForeColor = SystemColors.ButtonFace;
             btndaftar.Image = (Image)resources.GetObject("btndaftar.Image");
             btndaftar.ImageAlign = ContentAlignment.TopLeft;
-            btndaftar.Location = new Point(480, 490);
+            btndaftar.Location = new Point(481, 496);
             btndaftar.Name = "btndaftar";
             btndaftar.Size = new Size(546, 47);
             btndaftar.TabIndex = 15;
@@ -88,7 +91,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(671, 543);
+            label2.Location = new Point(672, 549);
             label2.Name = "label2";
             label2.Size = new Size(119, 17);
             label2.TabIndex = 16;
@@ -100,7 +103,7 @@
             linklogin.BackColor = Color.Transparent;
             linklogin.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linklogin.LinkColor = Color.Black;
-            linklogin.Location = new Point(786, 543);
+            linklogin.Location = new Point(787, 549);
             linklogin.Name = "linklogin";
             linklogin.Size = new Size(41, 17);
             linklogin.TabIndex = 17;
@@ -115,22 +118,49 @@
             tbemail.Name = "tbemail";
             tbemail.Size = new Size(467, 20);
             tbemail.TabIndex = 18;
+            tbemail.TextChanged += tbemail_TextChanged;
             // 
             // tbpassword
             // 
             tbpassword.BorderStyle = BorderStyle.None;
             tbpassword.Location = new Point(519, 345);
             tbpassword.Name = "tbpassword";
-            tbpassword.Size = new Size(467, 20);
+            tbpassword.Size = new Size(407, 20);
             tbpassword.TabIndex = 19;
+            tbpassword.TextChanged += tbpassword_TextChanged;
             // 
             // tbconfirmpass
             // 
             tbconfirmpass.BorderStyle = BorderStyle.None;
             tbconfirmpass.Location = new Point(519, 434);
             tbconfirmpass.Name = "tbconfirmpass";
-            tbconfirmpass.Size = new Size(467, 20);
+            tbconfirmpass.Size = new Size(407, 20);
             tbconfirmpass.TabIndex = 20;
+            tbconfirmpass.TextChanged += tbconfirmpass_TextChanged;
+            // 
+            // checkshow1
+            // 
+            checkshow1.AutoSize = true;
+            checkshow1.BackColor = Color.Transparent;
+            checkshow1.Location = new Point(945, 341);
+            checkshow1.Name = "checkshow1";
+            checkshow1.Size = new Size(67, 24);
+            checkshow1.TabIndex = 24;
+            checkshow1.Text = "Show";
+            checkshow1.UseVisualStyleBackColor = false;
+            checkshow1.CheckedChanged += checkshow1_CheckedChanged;
+            // 
+            // checkshow2
+            // 
+            checkshow2.AutoSize = true;
+            checkshow2.BackColor = Color.Transparent;
+            checkshow2.Location = new Point(945, 430);
+            checkshow2.Name = "checkshow2";
+            checkshow2.Size = new Size(67, 24);
+            checkshow2.TabIndex = 25;
+            checkshow2.Text = "Show";
+            checkshow2.UseVisualStyleBackColor = false;
+            checkshow2.CheckedChanged += checkshow2_CheckedChanged;
             // 
             // register
             // 
@@ -140,6 +170,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1095, 614);
+            Controls.Add(checkshow2);
+            Controls.Add(checkshow1);
             Controls.Add(tbconfirmpass);
             Controls.Add(tbpassword);
             Controls.Add(tbemail);
@@ -153,6 +185,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "register";
             Text = "Register";
+            Load += register_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -167,5 +200,9 @@
         private TextBox tbemail;
         private TextBox tbpassword;
         private TextBox tbconfirmpass;
+        private Button btnshow1;
+        private Button btnshow2;
+        private CheckBox checkshow1;
+        private CheckBox checkshow2;
     }
 }

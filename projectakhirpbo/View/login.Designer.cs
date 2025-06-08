@@ -98,7 +98,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Login;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1075, 594);
+            ClientSize = new Size(1053, 594);
             Controls.Add(linkregister);
             Controls.Add(label2);
             Controls.Add(btnmasuk);

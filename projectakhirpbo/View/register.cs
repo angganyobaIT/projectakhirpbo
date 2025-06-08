@@ -1,3 +1,9 @@
+using System;
+using Microsoft.VisualBasic.ApplicationServices;
+using projectakhirpbo.Controller;
+using projectakhirpbo.Model;
+using Npgsql;
+
 namespace projectakhirpbo
 {
     public partial class register : Form
@@ -5,7 +11,7 @@ namespace projectakhirpbo
         public register()
         {
             InitializeComponent();
-            //Console.WriteLine("HELLO WORLD")
+
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -22,8 +28,81 @@ namespace projectakhirpbo
 
         private void btndaftar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbusername.Text) ||
+                string.IsNullOrWhiteSpace(tbemail.Text) ||
+                string.IsNullOrWhiteSpace(tbpassword.Text) ||
+                string.IsNullOrWhiteSpace(tbconfirmpass.Text))
+            {
+                MessageBox.Show("Terdapat kolom yang belum diisi", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            // Cek username sudah digunakan
+            int found = 0;
+            NpgsqlConnection conn = Database.GetConnection();
+            conn.Open();
+            string query = "SELECT username FROM customer";
+
+            using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+            using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    if (tbusername.Text == reader.GetString(0))
+                    {
+                        found = 1;
+                        break;
+                    }
+                }
+            }
+            conn.Close();
+
+            if (found == 1)
+            {
+                MessageBox.Show($" Username {tbusername.Text} sudah pernah digunakan sebelumnya", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Validasi password
+            if (tbpassword.Text.Length < 8)
+            {
+                MessageBox.Show("Password harus terdiri dari minimal 8 karakter", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (tbpassword.Text != tbconfirmpass.Text)
+            {
+                MessageBox.Show("Password dan konfirmasi tidak cocok", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validasi email
+            string email = tbemail.Text.ToLower();
+            if (!(email.EndsWith("@gmail.com") || email.EndsWith("@yahoo.com")))
+            {
+                MessageBox.Show("Email harus menggunakan domain Gmail atau Yahoo", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Simpan ke database via controller
+            var newCustomer = new customer
+            {
+                username = tbusername.Text,
+                email = tbemail.Text,
+                password = tbpassword.Text
+            };
+
+            if (usercontroller.registeruser(newCustomer))
+            {
+                MessageBox.Show("Akun berhasil dibuat", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Gagal membuat akun.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,5 +115,69 @@ namespace projectakhirpbo
             Login.Show();
             this.Hide();
         }
+
+        private void tbusername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void register_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void checkshow1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkshow1.Checked)
+            {
+                tbpassword.PasswordChar = '\0';
+            }
+            else
+            {
+                tbpassword.PasswordChar = '*';
+            }
+        }
+
+        private void checkshow2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkshow2.Checked)
+            {
+                tbconfirmpass.PasswordChar = '\0';
+            }
+            else
+            {
+                tbconfirmpass.PasswordChar = '*';
+            }
+        }
+
+        private void tbconfirmpass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbemail_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        //private void btnshow1_Click(object sender, EventArgs e)
+        //{
+        //    // Toggle password visibility
+        //    if (tbpassword.PasswordChar == '*')
+        //    {
+        //        tbpassword.PasswordChar = '\0'; // Show password
+        //    }
+        //    else
+        //    {
+        //        tbpassword.PasswordChar = '*'; // Hide password
+        //    }
+        //}
+
     }
 }
