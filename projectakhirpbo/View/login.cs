@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using projectakhirpbo.View;
 
 namespace projectakhirpbo
 {
@@ -31,6 +32,13 @@ namespace projectakhirpbo
         {
             register Register = new register();
             Register.Show();
+            this.Hide();
+        }
+
+        private void btnmasuk_Click(object sender, EventArgs e)
+        {
+            reservasi reservasi = new reservasi();
+            reservasi.Show();
             this.Hide();
         }
     }

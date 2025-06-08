@@ -44,7 +44,7 @@
             // 
             // btlogin
             // 
-            btlogin.Location = new Point(1125, 463);
+            btlogin.Location = new Point(1334, 498);
             btlogin.Name = "btlogin";
             btlogin.Size = new Size(108, 29);
             btlogin.TabIndex = 6;
@@ -65,22 +65,24 @@
             // tbusername
             // 
             tbusername.BorderStyle = BorderStyle.None;
-            tbusername.Location = new Point(519, 166);
+            tbusername.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbusername.Location = new Point(874, 274);
             tbusername.Name = "tbusername";
-            tbusername.Size = new Size(467, 20);
+            tbusername.Size = new Size(841, 40);
             tbusername.TabIndex = 8;
             tbusername.TextChanged += tbusername_TextChanged;
             // 
             // btndaftar
             // 
             btndaftar.BackColor = Color.Crimson;
+            btndaftar.FlatStyle = FlatStyle.Popup;
             btndaftar.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btndaftar.ForeColor = SystemColors.ButtonFace;
             btndaftar.Image = (Image)resources.GetObject("btndaftar.Image");
             btndaftar.ImageAlign = ContentAlignment.TopLeft;
-            btndaftar.Location = new Point(481, 496);
+            btndaftar.Location = new Point(894, 898);
             btndaftar.Name = "btndaftar";
-            btndaftar.Size = new Size(546, 47);
+            btndaftar.Size = new Size(830, 60);
             btndaftar.TabIndex = 15;
             btndaftar.Text = "Daftar";
             btndaftar.UseVisualStyleBackColor = false;
@@ -90,22 +92,24 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(672, 549);
+            label2.Font = new Font("Tahoma", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(1104, 800);
             label2.Name = "label2";
-            label2.Size = new Size(119, 17);
+            label2.Size = new Size(230, 30);
             label2.TabIndex = 16;
-            label2.Text = "Belum punya akun?";
+            label2.Text = "Sudah punya akun?";
+            label2.Click += label2_Click;
             // 
             // linklogin
             // 
             linklogin.AutoSize = true;
             linklogin.BackColor = Color.Transparent;
-            linklogin.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linklogin.Font = new Font("Tahoma", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linklogin.LinkColor = Color.Black;
-            linklogin.Location = new Point(787, 549);
+            linklogin.Location = new Point(1340, 800);
             linklogin.Name = "linklogin";
-            linklogin.Size = new Size(41, 17);
+            linklogin.Size = new Size(82, 30);
             linklogin.TabIndex = 17;
             linklogin.TabStop = true;
             linklogin.Text = "Login";
@@ -114,27 +118,30 @@
             // tbemail
             // 
             tbemail.BorderStyle = BorderStyle.None;
-            tbemail.Location = new Point(519, 256);
+            tbemail.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbemail.Location = new Point(874, 425);
             tbemail.Name = "tbemail";
-            tbemail.Size = new Size(467, 20);
+            tbemail.Size = new Size(841, 40);
             tbemail.TabIndex = 18;
             tbemail.TextChanged += tbemail_TextChanged;
             // 
             // tbpassword
             // 
             tbpassword.BorderStyle = BorderStyle.None;
-            tbpassword.Location = new Point(519, 345);
+            tbpassword.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbpassword.Location = new Point(874, 575);
             tbpassword.Name = "tbpassword";
-            tbpassword.Size = new Size(407, 20);
+            tbpassword.Size = new Size(797, 40);
             tbpassword.TabIndex = 19;
             tbpassword.TextChanged += tbpassword_TextChanged;
             // 
             // tbconfirmpass
             // 
             tbconfirmpass.BorderStyle = BorderStyle.None;
-            tbconfirmpass.Location = new Point(519, 434);
+            tbconfirmpass.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbconfirmpass.Location = new Point(874, 724);
             tbconfirmpass.Name = "tbconfirmpass";
-            tbconfirmpass.Size = new Size(407, 20);
+            tbconfirmpass.Size = new Size(797, 40);
             tbconfirmpass.TabIndex = 20;
             tbconfirmpass.TextChanged += tbconfirmpass_TextChanged;
             // 
@@ -142,7 +149,7 @@
             // 
             checkshow1.AutoSize = true;
             checkshow1.BackColor = Color.Transparent;
-            checkshow1.Location = new Point(945, 341);
+            checkshow1.Location = new Point(1699, 583);
             checkshow1.Name = "checkshow1";
             checkshow1.Size = new Size(67, 24);
             checkshow1.TabIndex = 24;
@@ -154,7 +161,7 @@
             // 
             checkshow2.AutoSize = true;
             checkshow2.BackColor = Color.Transparent;
-            checkshow2.Location = new Point(945, 430);
+            checkshow2.Location = new Point(1699, 733);
             checkshow2.Name = "checkshow2";
             checkshow2.Size = new Size(67, 24);
             checkshow2.TabIndex = 25;
@@ -169,7 +176,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1095, 614);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(checkshow2);
             Controls.Add(checkshow1);
             Controls.Add(tbconfirmpass);
@@ -182,6 +189,7 @@
             Controls.Add(label1);
             Controls.Add(btlogin);
             DoubleBuffered = true;
+            ForeColor = SystemColors.ControlLightLight;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "register";
             Text = "Register";

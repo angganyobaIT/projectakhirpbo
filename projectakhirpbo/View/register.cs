@@ -3,6 +3,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 using projectakhirpbo.Controller;
 using projectakhirpbo.Model;
 using Npgsql;
+using projectakhirpbo.View;
 
 namespace projectakhirpbo
 {
@@ -33,7 +34,7 @@ namespace projectakhirpbo
                 string.IsNullOrWhiteSpace(tbpassword.Text) ||
                 string.IsNullOrWhiteSpace(tbconfirmpass.Text))
             {
-                MessageBox.Show("Terdapat kolom yang belum diisi", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pastikan semua kolom telah terisi", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -59,7 +60,7 @@ namespace projectakhirpbo
 
             if (found == 1)
             {
-                MessageBox.Show($" Username {tbusername.Text} sudah pernah digunakan sebelumnya", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Username {tbusername.Text} sudah pernah digunakan sebelumnya", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -84,7 +85,7 @@ namespace projectakhirpbo
                 return;
             }
 
-            // Simpan ke database via controller
+            // Simpan ke database
             var newCustomer = new customer
             {
                 username = tbusername.Text,
@@ -95,6 +96,9 @@ namespace projectakhirpbo
             if (usercontroller.registeruser(newCustomer))
             {
                 MessageBox.Show("Akun berhasil dibuat", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Homepage homepage = new Homepage();
+                homepage.Show();
+                this.Hide();
             }
             else
             {
@@ -124,6 +128,8 @@ namespace projectakhirpbo
         private void register_Load(object sender, EventArgs e)
         {
 
+            tbpassword.PasswordChar = '*';
+            tbconfirmpass.PasswordChar = '*';
         }
 
 
@@ -163,7 +169,12 @@ namespace projectakhirpbo
 
         private void tbemail_TextChanged(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void btnshow1_Click(object sender, EventArgs e)
