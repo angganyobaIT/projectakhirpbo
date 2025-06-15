@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(reservasi));
             btnback = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            reserv_date = new DateTimePicker();
             tb_namacustomer = new TextBox();
-            no_telp_customer = new TextBox();
+            tb_telp_customer = new TextBox();
             jumlah_orang = new NumericUpDown();
             reserv_time = new ComboBox();
             lanjutkan = new Button();
-            comboBox1 = new ComboBox();
+            cb_pilihanruangan = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)jumlah_orang).BeginInit();
             SuspendLayout();
             // 
@@ -54,37 +54,42 @@
             btnback.UseVisualStyleBackColor = false;
             btnback.Click += btnback_Click;
             // 
-            // dateTimePicker1
+            // reserv_date
             // 
-            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker1.Location = new Point(864, 191);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.RightToLeft = RightToLeft.Yes;
-            dateTimePicker1.Size = new Size(881, 27);
-            dateTimePicker1.TabIndex = 24;
+            reserv_date.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            reserv_date.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            reserv_date.Location = new Point(864, 191);
+            reserv_date.Name = "reserv_date";
+            reserv_date.RightToLeft = RightToLeft.Yes;
+            reserv_date.Size = new Size(881, 26);
+            reserv_date.TabIndex = 24;
             // 
             // tb_namacustomer
             // 
-            tb_namacustomer.Location = new Point(864, 458);
+            tb_namacustomer.BorderStyle = BorderStyle.None;
+            tb_namacustomer.Font = new Font("Tahoma", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_namacustomer.Location = new Point(866, 449);
             tb_namacustomer.Name = "tb_namacustomer";
-            tb_namacustomer.Size = new Size(881, 27);
+            tb_namacustomer.Size = new Size(881, 33);
             tb_namacustomer.TabIndex = 26;
             // 
-            // no_telp_customer
+            // tb_telp_customer
             // 
-            no_telp_customer.Location = new Point(864, 588);
-            no_telp_customer.Name = "no_telp_customer";
-            no_telp_customer.Size = new Size(881, 27);
-            no_telp_customer.TabIndex = 27;
+            tb_telp_customer.BorderStyle = BorderStyle.None;
+            tb_telp_customer.Font = new Font("Tahoma", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_telp_customer.Location = new Point(864, 580);
+            tb_telp_customer.Name = "tb_telp_customer";
+            tb_telp_customer.Size = new Size(881, 40);
+            tb_telp_customer.TabIndex = 27;
             // 
             // jumlah_orang
             // 
             jumlah_orang.BorderStyle = BorderStyle.None;
-            jumlah_orang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            jumlah_orang.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             jumlah_orang.ForeColor = Color.Black;
-            jumlah_orang.Location = new Point(864, 721);
+            jumlah_orang.Location = new Point(866, 723);
             jumlah_orang.Name = "jumlah_orang";
-            jumlah_orang.Size = new Size(881, 23);
+            jumlah_orang.Size = new Size(881, 22);
             jumlah_orang.TabIndex = 28;
             jumlah_orang.TextAlign = HorizontalAlignment.Center;
             jumlah_orang.UpDownAlign = LeftRightAlignment.Left;
@@ -92,12 +97,12 @@
             // reserv_time
             // 
             reserv_time.BackColor = Color.White;
-            reserv_time.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            reserv_time.Font = new Font("Tahoma", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             reserv_time.FormattingEnabled = true;
             reserv_time.Items.AddRange(new object[] { "08:00", "10:00", "12:00", "14:00", "16:00", "17:00", "19:00" });
-            reserv_time.Location = new Point(864, 324);
+            reserv_time.Location = new Point(864, 317);
             reserv_time.Name = "reserv_time";
-            reserv_time.Size = new Size(881, 26);
+            reserv_time.Size = new Size(881, 41);
             reserv_time.TabIndex = 29;
             // 
             // lanjutkan
@@ -113,14 +118,14 @@
             lanjutkan.UseVisualStyleBackColor = false;
             lanjutkan.Click += lanjutkan_Click;
             // 
-            // comboBox1
+            // cb_pilihanruangan
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Indoor", "Outdoor" });
-            comboBox1.Location = new Point(141, 929);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(463, 28);
-            comboBox1.TabIndex = 32;
+            cb_pilihanruangan.FormattingEnabled = true;
+            cb_pilihanruangan.Items.AddRange(new object[] { "Indoor", "Outdoor" });
+            cb_pilihanruangan.Location = new Point(141, 929);
+            cb_pilihanruangan.Name = "cb_pilihanruangan";
+            cb_pilihanruangan.Size = new Size(463, 28);
+            cb_pilihanruangan.TabIndex = 32;
             // 
             // reservasi
             // 
@@ -129,13 +134,13 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1902, 1033);
-            Controls.Add(comboBox1);
+            Controls.Add(cb_pilihanruangan);
             Controls.Add(lanjutkan);
             Controls.Add(reserv_time);
             Controls.Add(jumlah_orang);
-            Controls.Add(no_telp_customer);
+            Controls.Add(tb_telp_customer);
             Controls.Add(tb_namacustomer);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(reserv_date);
             Controls.Add(btnback);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -149,12 +154,12 @@
 
         #endregion
         private Button btnback;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker reserv_date;
         private TextBox tb_namacustomer;
-        private TextBox no_telp_customer;
+        private TextBox tb_telp_customer;
         private NumericUpDown jumlah_orang;
         private ComboBox reserv_time;
         private Button lanjutkan;
-        private ComboBox comboBox1;
+        private ComboBox cb_pilihanruangan;
     }
 }

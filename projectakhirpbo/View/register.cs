@@ -22,73 +22,73 @@ namespace projectakhirpbo
 
         private void btlogin_Click(object sender, EventArgs e)
         {
-            login login = new login();
-            login.Show();
-            this.Hide();
+           
         }
 
         private void btndaftar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbusername.Text) ||
-                string.IsNullOrWhiteSpace(tbemail.Text) ||
-                string.IsNullOrWhiteSpace(tbpassword.Text) ||
-                string.IsNullOrWhiteSpace(tbconfirmpass.Text))
+       string.IsNullOrWhiteSpace(tbemail.Text) ||
+       string.IsNullOrWhiteSpace(tbpassword.Text) ||
+       string.IsNullOrWhiteSpace(tbconfirmpass.Text))
             {
-                MessageBox.Show("Pastikan semua kolom telah terisi", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Semua kolom harus diisi!", "Peringatan",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Cek username sudah digunakan
-            int found = 0;
-            NpgsqlConnection conn = Database.GetConnection();
-            conn.Open();
-            string query = "SELECT username FROM customer";
-
-            using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-            using (NpgsqlDataReader reader = cmd.ExecuteReader())
+            // Validasi username unik
+            if (UserController.IsUsernameExists(tbusername.Text.Trim()))
             {
-                while (reader.Read())
-                {
-                    if (tbusername.Text == reader.GetString(0))
-                    {
-                        found = 1;
-                        break;
-                    }
-                }
+                MessageBox.Show("Username sudah digunakan!", "Peringatan",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            conn.Close();
 
-            if (found == 1)
+            // Validasi email
+            string email = tbemail.Text.Trim().ToLower();
+            if (!(email.EndsWith("@gmail.com") && !(email.EndsWith("@yahoo.com"))))
             {
-                MessageBox.Show($"Username {tbusername.Text} sudah pernah digunakan sebelumnya", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hanya email @gmail.com atau @yahoo.com yang diterima!",
+                                "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Validasi password
             if (tbpassword.Text.Length < 8)
             {
-                MessageBox.Show("Password harus terdiri dari minimal 8 karakter", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Password minimal 8 karakter!", "Peringatan",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (tbpassword.Text != tbconfirmpass.Text)
             {
-                MessageBox.Show("Password dan konfirmasi tidak cocok", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Password dan konfirmasi password tidak cocok!", "Peringatan",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Validasi email
-            string email = tbemail.Text.ToLower();
-            if (!(email.EndsWith("@gmail.com") || email.EndsWith("@yahoo.com")))
+            // Buat objek customer baru
+            Customer newCustomer = new Customer
             {
-                MessageBox.Show("Email harus menggunakan domain Gmail atau Yahoo", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Username = tbusername.Text.Trim(),
+                Email = tbemail.Text.Trim(),
+                Password = tbpassword.Text // Dalam real app, password harus di-hash
+            };
+
+            // Simpan ke database
+            if (UserController.RegisterCustomer(newCustomer))
+            {
+                MessageBox.Show("Registrasi berhasil!", "Sukses",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                login loginForm = new login();
+                loginForm.Show();
+                this.Hide();
             }
 
 
-          
         }
-
 
 
         private void button1_Click(object sender, EventArgs e)

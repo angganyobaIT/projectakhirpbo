@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace projectakhirpbo.Model
 {
-    class reservasimodel
+    public class ReservasiModel
     {
-        public int id_reservasi { get; set; }
-        public TimeSpan waktuReservasi { get; set; } // time
-        public DateTime tanggalReservasi { get; set; } // date
-        public string namaCustomer { get; set; }
-        public string noTeleponCustomer { get; set; }
-        public int jumlahOrang { get; set; }
-        public int meja { get; set; }
+        public int IdReservasi { get; set; }
+        public string NamaCustomer { get; set; }
+        public DateTime TanggalReservasi { get; set; }
+        public TimeSpan WaktuReservasi { get; set; }
+        public int JumlahOrang { get; set; }
+        public int IdRuangan { get; set; }
+        public int IdCustomer { get; set; }
     }
-}
 
+}
