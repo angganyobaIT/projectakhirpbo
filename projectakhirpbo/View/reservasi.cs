@@ -90,20 +90,53 @@ namespace projectakhirpbo.View
             int idRuangan = cb_pilihanruangan.SelectedItem.ToString() == "Indoor" ? 1 : 2;
 
             // Buat objek reservasi
-            var reservasi = new ReservasiModel
+            //var reservasi = new ReservasiModel
+            //{
+            //    NamaCustomer = tb_namacustomer.Text,
+            //    TanggalReservasi = reserv_date.Value,
+            //    WaktuReservasi = waktu,
+            //    JumlahOrang = (int)jumlah_orang.Value,
+            //    IdRuangan = idRuangan,
+            //    IdCustomer = UserSession.CurrentUserId // Menggunakan ID dari session
+            //};
+            var pembayaran = new pembayaranmodel
             {
-                NamaCustomer = tb_namacustomer.Text,
-                TanggalReservasi = reserv_date.Value,
-                WaktuReservasi = waktu,
-                JumlahOrang = (int)jumlah_orang.Value,
-                IdRuangan = idRuangan,
-                IdCustomer = UserSession.CurrentUserId // Menggunakan ID dari session
+                waktu_pembayaran = DateTime.Now
             };
 
             try
             {
                 // Simpan ke database
+                int idTransaksi = ReservasiController.Transaksi(pembayaran);
+                if (idTransaksi <= 0)
+                {
+                    // Gagal simpan transaksi
+                    return;
+                }
+                //bool sukses = ReservasiController.transaksi(pembayaran);
+
+                var reservasi = new ReservasiModel
+                {
+                    NamaCustomer = tb_namacustomer.Text,
+                    TanggalReservasi = reserv_date.Value,
+                    WaktuReservasi = waktu,
+                    JumlahOrang = (int)jumlah_orang.Value,
+                    IdCustomer = UserSession.CurrentUserId,
+                    IdRuangan = idRuangan,
+                    IdTransaksi = idTransaksi
+                };
+
+                // 3. Simpan reservasi
                 int idReservasi = ReservasiController.BuatReservasi(reservasi);
+                if (idReservasi > 0)
+                {
+                    MessageBox.Show($"Reservasi berhasil! ID: {idReservasi}");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal membuat reservasi.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //int idReservasi = ReservasiController.BuatReservasi(reservasi);
 
                 if (idReservasi > 0)
                 {

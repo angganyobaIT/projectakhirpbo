@@ -34,6 +34,7 @@
             btnmasuk = new Button();
             linkregister = new LinkLabel();
             label2 = new Label();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // tbusernamelog
@@ -94,6 +95,19 @@
             label2.Text = "Sudah punya akun?";
             label2.Click += label2_Click;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.BackColor = Color.Transparent;
+            linkLabel1.LinkColor = Color.Black;
+            linkLabel1.Location = new Point(820, 454);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(58, 20);
+            linkLabel1.TabIndex = 26;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "admin?";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -101,6 +115,7 @@
             BackgroundImage = Properties.Resources.Login;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1053, 594);
+            Controls.Add(linkLabel1);
             Controls.Add(linkregister);
             Controls.Add(label2);
             Controls.Add(btnmasuk);
@@ -120,5 +135,6 @@
         private Button btnmasuk;
         private LinkLabel linkregister;
         private Label label2;
+        private LinkLabel linkLabel1;
     }
 }

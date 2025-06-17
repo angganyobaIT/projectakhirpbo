@@ -122,7 +122,7 @@
             // 
             cb_pilihanruangan.FormattingEnabled = true;
             cb_pilihanruangan.Items.AddRange(new object[] { "Indoor", "Outdoor" });
-            cb_pilihanruangan.Location = new Point(141, 929);
+            cb_pilihanruangan.Location = new Point(142, 932);
             cb_pilihanruangan.Name = "cb_pilihanruangan";
             cb_pilihanruangan.Size = new Size(463, 28);
             cb_pilihanruangan.TabIndex = 32;

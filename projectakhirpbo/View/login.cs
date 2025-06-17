@@ -66,7 +66,7 @@ namespace projectakhirpbo
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Buka form utama
-                    Homepage homepage = new Homepage(); 
+                    Homepage homepage = new Homepage();
                     homepage.Show();
                     this.Hide();
                 }
@@ -81,6 +81,11 @@ namespace projectakhirpbo
                 MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
         }
     }
 }    

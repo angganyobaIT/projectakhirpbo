@@ -13,6 +13,7 @@ namespace projectakhirpbo.Controller
             string query = @"SELECT SUM(menu.harga * detail_reservasi.kuantitas_menu) 
                             FROM detail_reservasi 
                             join menu on menu.id_menu = detail_reservasi.id_menu";
+                            //WHERE id_reservasi = @id";
 
             using (var conn = Database.GetConnection())
             using (var cmd = new NpgsqlCommand(query, conn))

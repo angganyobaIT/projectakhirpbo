@@ -193,7 +193,6 @@ namespace projectakhirpbo.View
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
                     pembayaran pembayaran = new pembayaran(currentReservationId);
                     pembayaran.Show();
-                    this.Hide();
                 }
                 else
                 {
