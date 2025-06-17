@@ -17,7 +17,7 @@ namespace projectakhirpbo.Controller
             (nama_lengkap, tanggal_kedatangan, waktu_kedatangan, 
              jumlah_orang, status_reservasi, id_transaksi, id_customer, id_ruangan)  
         VALUES 
-            (@nama, @tanggal, @waktu, @jumlah, @status, @transaksi, @customer, @ruangan)
+            (@nama, @tanggal, @waktu, @jumlah, 'Pending', @transaksi, @customer, @ruangan)
         RETURNING id_reservasi;
     ";
 
@@ -26,7 +26,6 @@ namespace projectakhirpbo.Controller
             cmd.Parameters.AddWithValue("@tanggal", reservasi.TanggalReservasi);
             cmd.Parameters.AddWithValue("@waktu", reservasi.WaktuReservasi);
             cmd.Parameters.AddWithValue("@jumlah", reservasi.JumlahOrang);
-            cmd.Parameters.AddWithValue("@status", "Pending");
             cmd.Parameters.AddWithValue("@transaksi", reservasi.IdTransaksi);
             cmd.Parameters.AddWithValue("@customer", reservasi.IdCustomer);
             cmd.Parameters.AddWithValue("@ruangan", reservasi.IdRuangan);
@@ -71,7 +70,7 @@ namespace projectakhirpbo.Controller
                 // Kita tambahkan RETURNING id_transaksi
                 string sql_tambah = @"
             INSERT INTO transaksi (waktu_transaksi, status_pembayaran)
-            VALUES (@waktu_transaksi, 'Diterima')
+            VALUES (@waktu_transaksi, 'Pending')
             RETURNING id_transaksi;
         ";
 

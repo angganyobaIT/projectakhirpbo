@@ -12,8 +12,8 @@ namespace projectakhirpbo
         private static string localhost = "localhost";
         private static string port = "5432";
         private static string username = "postgres";
-        private static string password = "postgresql31_";
-        private static string database = "pbo_finaltask";
+        private static string password = "chacha10";
+        private static string database = "PBO_PRO3";
 
         public static NpgsqlConnection GetConnection()
         {

@@ -108,7 +108,7 @@ namespace projectakhirpbo.Controller
                     }
 
                     // Insert yang baru
-                    string insertQuery = "INSERT INTO detail_reservasi (id_menu, kuantitas_menu) VALUES (@id_menu, @kuantitas)";
+                    string insertQuery = "INSERT INTO detail_reservasi (id_menu, kuantitas_menu,id_reservasi) VALUES (@id_menu, @kuantitas,@id_reservasi) ";
                     foreach (var menu in selectedMenus)
                     {
                         using (var insertCmd = new NpgsqlCommand(insertQuery, conn))
@@ -116,6 +116,7 @@ namespace projectakhirpbo.Controller
                             //insertCmd.Parameters.AddWithValue("@id_reservasi", idReservasi);
                             insertCmd.Parameters.AddWithValue("@id_menu", menu.IdMenu);
                             insertCmd.Parameters.AddWithValue("@kuantitas", menu.Quantity);
+                            insertCmd.Parameters.AddWithValue("@id_reservasi", idReservasi);
                             insertCmd.ExecuteNonQuery();
                         }
                     }
@@ -130,28 +131,28 @@ namespace projectakhirpbo.Controller
                 return false;
             }
         }
-        public static bool SimpanPesanan(int idMenu, int kuantitas)
-        {
-            // Pastikan ada reservasi aktif
-            if (reservation_session.CurrentReservid == 0)
-                return false;
+        //public static bool SimpanPesanan(int idMenu, int kuantitas)
+        //{
+        //    // Pastikan ada reservasi aktif
+        //    if (reservation_session.CurrentReservid == 0)
+        //        return false;
 
-            using (var conn = Database.GetConnection())
-            {
-                conn.Open();
-                string query = @"INSERT INTO detail_reservasi 
-                                (id_reservasi, id_menu, kuantitas_menu) 
-                                VALUES (@id_reservasi, @id_menu, @kuantitas)";
+        //    using (var conn = Database.GetConnection())
+        //    {
+        //        conn.Open();
+        //        string query = @"INSERT INTO detail_reservasi 
+        //                        (id_reservasi, id_menu, kuantitas_menu) 
+        //                        VALUES (@id_reservasi, @id_menu, @kuantitas)";
 
-                using (var cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id_reservasi", reservation_session.CurrentReservid);
-                    cmd.Parameters.AddWithValue("@id_menu", idMenu);
-                    cmd.Parameters.AddWithValue("@kuantitas", kuantitas);
+        //        using (var cmd = new NpgsqlCommand(query, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@id_reservasi", reservation_session.CurrentReservid);
+        //            cmd.Parameters.AddWithValue("@id_menu", idMenu);
+        //            cmd.Parameters.AddWithValue("@kuantitas", kuantitas);
 
-                    return cmd.ExecuteNonQuery() > 0;
-                }
-            }
-        }
+        //            return cmd.ExecuteNonQuery() > 0;
+        //        }
+        //    }
+        //}
     }
 }

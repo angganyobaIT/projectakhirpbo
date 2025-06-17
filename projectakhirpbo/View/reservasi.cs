@@ -147,7 +147,7 @@ namespace projectakhirpbo.View
                     MessageBox.Show("Reservasi berhasil dibuat!", "Sukses",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi);
+                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi);
                     pilihMenuForm.Show();
                     this.Hide();
                 }

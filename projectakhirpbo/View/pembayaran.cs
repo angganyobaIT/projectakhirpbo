@@ -10,11 +10,13 @@ namespace projectakhirpbo.View
     public partial class pembayaran : Form
     {
         private int idReservasi;
+        private int id_transaksi;
         private pembayaranmodel dataPembayaran;
-        public pembayaran(int reservationId)
+        public pembayaran(int reservationId,int transaksi_id)
         {
             InitializeComponent();
             this.idReservasi = reservationId;
+            this.id_transaksi = transaksi_id;
             SiapkanPembayaran();
             TampilkanTotal();
         }
@@ -24,7 +26,8 @@ namespace projectakhirpbo.View
             {
                 IdReservasi = idReservasi,
                 Total = pembayarancontroller.HitungTotal(idReservasi),
-                Status = "Pending"
+                id_transaksi = id_transaksi
+                //Status = "Pending"
             };
         }
 
@@ -51,7 +54,8 @@ namespace projectakhirpbo.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (pembayarancontroller.ProsesPembayaran(dataPembayaran))
+            bool sukses = pembayarancontroller.ProsesPembayaran(dataPembayaran);
+            if (sukses)
             {
                 MessageBox.Show("Pembayaran berhasil!", "Sukses");
                 Homepage homepage = new Homepage();

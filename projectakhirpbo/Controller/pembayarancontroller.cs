@@ -12,7 +12,8 @@ namespace projectakhirpbo.Controller
             // Hitung total harga menu yang dipesan
             string query = @"SELECT SUM(menu.harga * detail_reservasi.kuantitas_menu) 
                             FROM detail_reservasi 
-                            join menu on menu.id_menu = detail_reservasi.id_menu";
+                            join menu on menu.id_menu = detail_reservasi.id_menu
+                            Where id_reservasi = @id";
                             //WHERE id_reservasi = @id";
 
             using (var conn = Database.GetConnection())
@@ -32,40 +33,45 @@ namespace projectakhirpbo.Controller
                 conn.Open();
                 using (var transaction = conn.BeginTransaction())
                 {
+                    string queryReservasi = @"UPDATE transaksi 
+                                               SET status_pembayaran = 'Diterima' 
+                                               WHERE id_transaksi = @idtransaksi";
+
                     try
                     {
-                        // 1. Simpan data transaksi
-                        string queryTransaksi = @"INSERT INTO transaksi 
-                                               (id_reservasi, total, status) 
-                                               VALUES (@id, @total, @status)";
-
-                        using (var cmd = new NpgsqlCommand(queryTransaksi, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@id", pembayaran.IdReservasi);
-                            cmd.Parameters.AddWithValue("@total", pembayaran.Total);
-                            cmd.Parameters.AddWithValue("@status", pembayaran.Status);
-                            cmd.ExecuteNonQuery();
-                        }
-
-                        // 2. Update status reservasi
-                        string queryReservasi = @"UPDATE reservasi 
-                                               SET status = 'Dibayar' 
-                                               WHERE id = @id";
-
                         using (var cmd = new NpgsqlCommand(queryReservasi, conn, transaction))
                         {
-                            cmd.Parameters.AddWithValue("@id", pembayaran.IdReservasi);
+                            cmd.Parameters.AddWithValue("@idtransaksi", pembayaran.id_transaksi);
                             cmd.ExecuteNonQuery();
                         }
 
                         transaction.Commit();
                         return true;
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        // Tampilkan pesan error
+                        MessageBox.Show(ex.Message, "Error Exception");
                         transaction.Rollback();
                         return false;
                     }
+                    //try
+                    //{
+
+                    //    using (var cmd = new NpgsqlCommand(queryReservasi, conn, transaction))
+                    //    {
+                    //        cmd.Parameters.AddWithValue("@idtransaksi", pembayaran.id_transaksi);
+                    //        cmd.ExecuteNonQuery();
+                    //    }
+
+                    //    transaction.Commit();
+                    //    return true;
+                    //}
+                    //catch
+                    //{
+                    //    transaction.Rollback();
+                    //    return false;
+                    //}
                 }
             }
         }

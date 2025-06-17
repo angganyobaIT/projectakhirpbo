@@ -29,7 +29,8 @@ namespace projectakhirpbo.View
             dataGridView1.Columns["id_reservasi"].Visible = false;
             string sql2 = @"select sum(kuantitas_menu * b.harga)
 from detail_reservasi a
-join menu b using (id_menu)";
+join menu b using (id_menu)
+where id_reservasi = @idreservasi";
             using (var conn = Database.GetConnection())
             {
                 try
@@ -37,6 +38,7 @@ join menu b using (id_menu)";
                     conn.Open();
                     using (var cmd = new NpgsqlCommand(sql2, conn))
                     {
+                        cmd.Parameters.AddWithValue("@idreservasi", _ID_reservasi);
                         int TOTAL = Convert.ToInt32(cmd.ExecuteScalar());
                         LB_total.Text = TOTAL.ToString();
                     }

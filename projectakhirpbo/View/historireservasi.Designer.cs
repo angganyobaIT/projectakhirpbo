@@ -40,9 +40,10 @@
             // 
             homepagebtn.BackgroundImage = (Image)resources.GetObject("homepagebtn.BackgroundImage");
             homepagebtn.BackgroundImageLayout = ImageLayout.Stretch;
-            homepagebtn.Location = new Point(101, 270);
+            homepagebtn.Location = new Point(88, 202);
+            homepagebtn.Margin = new Padding(3, 2, 3, 2);
             homepagebtn.Name = "homepagebtn";
-            homepagebtn.Size = new Size(39, 39);
+            homepagebtn.Size = new Size(34, 29);
             homepagebtn.TabIndex = 0;
             homepagebtn.UseVisualStyleBackColor = true;
             homepagebtn.Click += homepagebtn_Click;
@@ -51,9 +52,10 @@
             // 
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Location = new Point(105, 419);
+            button2.Location = new Point(92, 314);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(34, 37);
+            button2.Size = new Size(30, 28);
             button2.TabIndex = 1;
             button2.UseVisualStyleBackColor = true;
             // 
@@ -61,9 +63,10 @@
             // 
             logoutbtn.BackgroundImage = (Image)resources.GetObject("logoutbtn.BackgroundImage");
             logoutbtn.BackgroundImageLayout = ImageLayout.Stretch;
-            logoutbtn.Location = new Point(105, 898);
+            logoutbtn.Location = new Point(92, 674);
+            logoutbtn.Margin = new Padding(3, 2, 3, 2);
             logoutbtn.Name = "logoutbtn";
-            logoutbtn.Size = new Size(42, 43);
+            logoutbtn.Size = new Size(37, 32);
             logoutbtn.TabIndex = 2;
             logoutbtn.UseVisualStyleBackColor = true;
             logoutbtn.Click += logoutbtn_Click;
@@ -75,25 +78,28 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(392, 315);
+            dataGridView1.Location = new Point(343, 236);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1354, 611);
+            dataGridView1.Size = new Size(1185, 458);
             dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // historireservasi
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1902, 1033);
+            ClientSize = new Size(1664, 775);
             Controls.Add(dataGridView1);
             Controls.Add(logoutbtn);
             Controls.Add(button2);
             Controls.Add(homepagebtn);
             DoubleBuffered = true;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "historireservasi";
             Text = "historireservasi";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
