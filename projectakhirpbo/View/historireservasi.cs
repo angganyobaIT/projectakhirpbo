@@ -19,9 +19,9 @@ namespace projectakhirpbo.View
 
         private void homepagebtn_Click(object sender, EventArgs e)
         {
-            Homepage homepage = new Homepage();
-            homepage.Show();
-            this.Hide();
+            //Homepage homepage = new Homepage();
+            //homepage.Show();
+            //this.Hide();
         }
 
         private void logoutbtn_Click(object sender, EventArgs e)

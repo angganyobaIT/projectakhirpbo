@@ -14,15 +14,16 @@ namespace projectakhirpbo.Controller
 
             string query = @"
         INSERT INTO reservasi 
-            (nama_lengkap, tanggal_kedatangan, waktu_kedatangan, 
+            (nama_lengkap, no_telp,tanggal_kedatangan, waktu_kedatangan, 
              jumlah_orang, status_reservasi, id_transaksi, id_customer, id_ruangan)  
         VALUES 
-            (@nama, @tanggal, @waktu, @jumlah, 'Pending', @transaksi, @customer, @ruangan)
+            (@nama, @no_telp,@tanggal, @waktu, @jumlah, 'Pending', @transaksi, @customer, @ruangan)
         RETURNING id_reservasi;
     ";
 
             using var cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@nama", reservasi.NamaCustomer);
+            cmd.Parameters.AddWithValue("@no_telp", reservasi.No_telp);
             cmd.Parameters.AddWithValue("@tanggal", reservasi.TanggalReservasi);
             cmd.Parameters.AddWithValue("@waktu", reservasi.WaktuReservasi);
             cmd.Parameters.AddWithValue("@jumlah", reservasi.JumlahOrang);
@@ -31,6 +32,34 @@ namespace projectakhirpbo.Controller
             cmd.Parameters.AddWithValue("@ruangan", reservasi.IdRuangan);
 
             return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+        public static bool UpdateReservasi(ReservasiModel reservasi)
+        {
+            using var conn = Database.GetConnection();
+            conn.Open();
+
+            string query = @"
+        UPDATE reservasi
+           SET nama_lengkap      = @nama,
+               no_telp           = @no_telp,
+               tanggal_kedatangan= @tanggal,
+               waktu_kedatangan  = @waktu,
+               jumlah_orang      = @jumlah,
+               id_ruangan        = @ruangan
+         WHERE id_reservasi     = @id;
+    ";
+
+            using var cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@nama", reservasi.NamaCustomer);
+            cmd.Parameters.AddWithValue("@no_telp", reservasi.No_telp);
+            cmd.Parameters.AddWithValue("@tanggal", reservasi.TanggalReservasi);
+            cmd.Parameters.AddWithValue("@waktu", reservasi.WaktuReservasi);
+            cmd.Parameters.AddWithValue("@jumlah", reservasi.JumlahOrang);
+            cmd.Parameters.AddWithValue("@ruangan", reservasi.IdRuangan);
+            cmd.Parameters.AddWithValue("@id", reservasi.IdReservasi);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            return rowsAffected > 0;
         }
         //public static int BuatReservasi(ReservasiModel reservasi)
         //{

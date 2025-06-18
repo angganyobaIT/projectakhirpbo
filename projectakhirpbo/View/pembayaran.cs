@@ -11,14 +11,16 @@ namespace projectakhirpbo.View
     {
         private int idReservasi;
         private int id_transaksi;
+        private int id_customer;
         private pembayaranmodel dataPembayaran;
-        public pembayaran(int reservationId,int transaksi_id)
+        public pembayaran(int reservationId,int transaksi_id, int id_customer)
         {
             InitializeComponent();
             this.idReservasi = reservationId;
             this.id_transaksi = transaksi_id;
             SiapkanPembayaran();
             TampilkanTotal();
+            this.id_customer = id_customer;
         }
         private void SiapkanPembayaran()
         {
@@ -27,13 +29,11 @@ namespace projectakhirpbo.View
                 IdReservasi = idReservasi,
                 Total = pembayarancontroller.HitungTotal(idReservasi),
                 id_transaksi = id_transaksi
-                //Status = "Pending"
             };
         }
 
         private void TampilkanTotal()
         {
-            // Tampilkan total di label atau textbox
             totallbl.Text = $"Total: Rp {dataPembayaran.Total:N0}";
         }
 

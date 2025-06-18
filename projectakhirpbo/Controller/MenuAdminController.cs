@@ -215,6 +215,111 @@ VALUES (@nama,@harga,@dihapus,@id_kategori)";
                 return false;
             }
         }
+        public static List<M_Menu> get_makan()
+        {
+            List<M_Menu> menus = new List<M_Menu>();
+
+            try
+            {
+                using (var conn = Database.GetConnection())
+                {
+                    conn.Open();
+                    string sql_data = "SELECT a.id_menu, a.nama_menu, a.harga, a.id_kategori,  b.nama_kategori FROM menu a JOIN kategori_menu b ON a.id_kategori = b.id_kategori WHERE a.dihapus = 0 and a.id_kategori = 1";
+                    using (var cmd = new NpgsqlCommand(sql_data, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            menus.Add(new M_Menu
+                            {
+                                id_menu = reader.GetInt32(0),
+                                nama_menu = reader.GetString(1),
+                                harga = reader.GetInt32(2),   // atau GetInt32 jika kolom int
+                                id_kategori = reader.GetInt32(3),
+                                nama_kategori = reader.GetString(4)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saat mengambil data menu: " + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return menus;
+        }
+        public static List<M_Menu> get_minum()
+        {
+            List<M_Menu> menus = new List<M_Menu>();
+
+            try
+            {
+                using (var conn = Database.GetConnection())
+                {
+                    conn.Open();
+                    string sql_data = "SELECT a.id_menu, a.nama_menu, a.harga, a.id_kategori,  b.nama_kategori FROM menu a JOIN kategori_menu b ON a.id_kategori = b.id_kategori WHERE a.dihapus = 0 and a.id_kategori = 3";
+                    using (var cmd = new NpgsqlCommand(sql_data, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            menus.Add(new M_Menu
+                            {
+                                id_menu = reader.GetInt32(0),
+                                nama_menu = reader.GetString(1),
+                                harga = reader.GetInt32(2),   // atau GetInt32 jika kolom int
+                                id_kategori = reader.GetInt32(3),
+                                nama_kategori = reader.GetString(4)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saat mengambil data menu: " + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return menus;
+        }
+        public static List<M_Menu> get_cemilan()
+        {
+            List<M_Menu> menus = new List<M_Menu>();
+
+            try
+            {
+                using (var conn = Database.GetConnection())
+                {
+                    conn.Open();
+                    string sql_data = "SELECT a.id_menu, a.nama_menu, a.harga, a.id_kategori,  b.nama_kategori FROM menu a JOIN kategori_menu b ON a.id_kategori = b.id_kategori WHERE a.dihapus = 0 and a.id_kategori = 2";
+                    using (var cmd = new NpgsqlCommand(sql_data, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            menus.Add(new M_Menu
+                            {
+                                id_menu = reader.GetInt32(0),
+                                nama_menu = reader.GetString(1),
+                                harga = reader.GetInt32(2),   // atau GetInt32 jika kolom int
+                                id_kategori = reader.GetInt32(3),
+                                nama_kategori = reader.GetString(4)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saat mengambil data menu: " + ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return menus;
+        }
 
     }
 }
