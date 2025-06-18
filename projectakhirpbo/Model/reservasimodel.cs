@@ -32,6 +32,7 @@ namespace projectakhirpbo.Model
         public int IdCustomer { get; set; }
         public int IdTransaksi { get; set; }
 
+
         
         
     }

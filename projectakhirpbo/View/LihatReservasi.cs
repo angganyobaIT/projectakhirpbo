@@ -75,7 +75,23 @@ namespace projectakhirpbo.View
             }
             if (colName == "btnBatal")
             {
-                MessageBox.Show("Data Berhasil Dihapus Silahkan Refresh", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                int id_reservasi = Convert.ToInt32(row.Cells["IdReservasi"].Value);
+                bool berhasil = ReservasiController.BatalReservasi(id_reservasi);
+                if (berhasil)
+                {
+                    MessageBox.Show("Reservasi Berhasil Dibatalkan Silahkan Menunggu admin untuk refund", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LihatReservasi reser = new LihatReservasi();
+                    reser.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Gagal membatalkan reservasi.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    LihatReservasi reser = new LihatReservasi();
+                    reser.Show();
+                    this.Hide();
+                }
 
             }
         }
@@ -108,6 +124,13 @@ namespace projectakhirpbo.View
         }
 
         private void BTN_History_Click(object sender, EventArgs e)
+        {
+            historireservasi history = new historireservasi();
+            history.Show();
+            this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

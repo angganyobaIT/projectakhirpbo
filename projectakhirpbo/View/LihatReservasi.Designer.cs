@@ -49,6 +49,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1331, 610);
             dataGridView1.TabIndex = 10;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
             // BTN_Home
             // 

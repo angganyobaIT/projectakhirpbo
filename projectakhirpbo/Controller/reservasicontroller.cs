@@ -61,6 +61,23 @@ namespace projectakhirpbo.Controller
             int rowsAffected = cmd.ExecuteNonQuery();
             return rowsAffected > 0;
         }
+        public static bool BatalReservasi(int id_reservasi)
+        {
+            using var conn = Database.GetConnection();
+            conn.Open();
+
+            string query = @"
+        UPDATE reservasi
+           SET status_reservasi = 'Dibatalkan'
+         WHERE id_reservasi     = @id;
+    ";
+
+            using var cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", id_reservasi);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            return rowsAffected > 0;
+        }
         //public static int BuatReservasi(ReservasiModel reservasi)
         //{
         //    using (var conn = Database.GetConnection())

@@ -51,73 +51,6 @@ namespace projectakhirpbo.Controller
                 return false;
             }
         }
-
-
-        //public static List<ReservasiModel> Get_Resev_Customer(int idCustomer)
-        //{
-        //    var list = new List<ReservasiModel>();
-
-        //    try
-        //    {
-        //        using (var conn = Database.GetConnection())
-        //        {
-        //            conn.Open();
-        //            string sql = @"
-        //        SELECT 
-        //            m.id_reservasi         AS ""IdReservasi"",
-        //            m.nama_lengkap         AS ""NamaCustomer"",
-        //            m.tanggal_kedatangan   AS ""TanggalReservasi"",
-        //            m.waktu_kedatangan     AS ""WaktuReservasi"",
-        //            m.jumlah_orang         AS ""JumlahOrang"",
-        //            m.status_reservasi     AS ""StatusReservasi"",
-        //            k.jenis_ruangan        AS ""JenisRuangan""
-        //        FROM reservasi m
-        //        JOIN ruangan k 
-        //          ON m.id_ruangan = k.id_ruangan
-        //        WHERE m.id_customer = @id_customer;
-        //    ";
-
-        //            using (var cmd = new NpgsqlCommand(sql, conn))
-        //            {
-        //                cmd.Parameters.AddWithValue("id_customer", idCustomer);
-
-        //                using (var reader = cmd.ExecuteReader())
-        //                {
-        //                    // ambil posisi kolom sekali saja
-        //                    int ordId = reader.GetOrdinal("IdReservasi");
-        //                    int ordNama = reader.GetOrdinal("NamaCustomer");
-        //                    int ordTanggal = reader.GetOrdinal("TanggalReservasi");
-        //                    int ordWaktu = reader.GetOrdinal("WaktuReservasi");
-        //                    int ordJumlah = reader.GetOrdinal("JumlahOrang");
-        //                    int ordStatus = reader.GetOrdinal("StatusReservasi");
-        //                    int ordJenisRoom = reader.GetOrdinal("JenisRuangan");
-
-        //                    while (reader.Read())
-        //                    {
-        //                        list.Add(new ReservasiModel
-        //                        {
-        //                            IdReservasi = reader.GetInt32(ordId),
-        //                            NamaCustomer = reader.GetString(ordNama),
-        //                            TanggalReservasi = reader.GetDateTime(ordTanggal),
-        //                            WaktuReservasi = reader.GetTimeSpan(ordWaktu),
-        //                            JumlahOrang = reader.GetInt32(ordJumlah),
-        //                            status_reservasi = reader.GetString(ordStatus),
-        //                            jenis_ruangan = reader.GetString(ordJenisRoom),
-        //                            IdCustomer = idCustomer
-        //                        });
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error saat mengambil data reservasi: " + ex.Message,
-        //                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-
-        //    return list;
-        //}
         public static List<ReservasiModel> Get_Resev_Customer(int id)
         {
             var resev = new List<ReservasiModel>();
@@ -139,7 +72,8 @@ SELECT
 FROM reservasi m
 JOIN ruangan k 
   ON m.id_ruangan = k.id_ruangan
-WHERE m.id_customer = @id_customer;
+WHERE m.id_customer = @id_customer
+AND m.status_reservasi != 'Selesai' AND m.status_reservasi != 'Dibatalkan';
 ";
                     using (var cmd = new NpgsqlCommand(sql, conn))
                     {
@@ -172,60 +106,61 @@ WHERE m.id_customer = @id_customer;
             }
             return resev;
         }
-        //public static List<ReservasiModel> Get_Resev_Customer(int id)
-        //{
-        //    List<ReservasiModel> resev = new List<ReservasiModel>();
-
-        //    try
-        //    {
-        //        using (var conn = Database.GetConnection())
-        //        {
-        //            conn.Open();
-        //            string sql_data = @"
-        //    SELECT 
-        //        m.id_reservasi    AS ""id_reservasi"",
-        //        m.nama_lengkap    AS ""Nama"",
-        //        m.no_telp   AS    ""No_telp"",
-        //        m.tanggal_kedatangan AS ""Tanggal"",
-        //        m.waktu_kedatangan   AS ""Jam"",
-        //        m.jumlah_orang       AS ""Jumlah Orang"",
-        //        m.status_reservasi   AS ""Status"",
-        //        k.jenis_ruangan      AS ""Tempat""
-        //    FROM reservasi m
-        //    JOIN ruangan k 
-        //      ON m.id_ruangan = k.id_ruangan
-        //    WHERE m.id_customer = @id_customer;
-        //";
-        //            using (var cmd = new NpgsqlCommand(sql_data, conn))
-        //            using (var reader = cmd.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    resev.Add(new ReservasiModel
-        //                    {
-        //                        IdReservasi = reader.GetInt32(0),
-        //                        NamaCustomer = reader.GetString(1),
-        //                        No_telp = reader.GetString(2),
-        //                        TanggalReservasi = reader.GetDateTime(3),
-        //                        WaktuReservasi = reader.GetTimeSpan(4),
-        //                        JumlahOrang = reader.GetInt32(5),
-        //                        status_reservasi = reader.GetString(6),
-        //                        jenis_ruangan = reader.GetString(7),
-        //                        IdCustomer = id
-        //                    });
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error saat mengambil data menu: " + ex.Message, "Error",
-        //                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-
-        //    return resev;
-        //}
-
+        public static List<ReservasiModel> Get_Resev_history(int id)
+        {
+            var resev = new List<ReservasiModel>();
+            try
+            {
+                using (var conn = Database.GetConnection())
+                {
+                    conn.Open();
+                    string sql = @"
+SELECT 
+    m.id_reservasi    AS ""id_reservasi"",
+    m.nama_lengkap    AS ""Nama"",
+    m.no_telp         AS ""No_telp"",
+    m.tanggal_kedatangan AS ""Tanggal"",
+    m.waktu_kedatangan   AS ""Jam"",
+    m.jumlah_orang       AS ""Jumlah Orang"",
+    m.status_reservasi   AS ""Status"",
+    k.jenis_ruangan      AS ""Tempat""
+FROM reservasi m
+JOIN ruangan k 
+  ON m.id_ruangan = k.id_ruangan
+WHERE m.id_customer = @id_customer
+AND (m.status_reservasi = 'Selesai' or m.status_reservasi = 'Dibatalkan');
+";
+                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_customer", id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                resev.Add(new ReservasiModel
+                                {
+                                    IdReservasi = reader.GetInt32(0),
+                                    NamaCustomer = reader.GetString(1),
+                                    No_telp = reader.GetString(2),
+                                    TanggalReservasi = reader.GetDateTime(3),
+                                    WaktuReservasi = reader.GetTimeSpan(4),
+                                    JumlahOrang = reader.GetInt32(5),
+                                    status_reservasi = reader.GetString(6),   // contoh: PascalCase
+                                    jenis_ruangan = reader.GetString(7),
+                                    IdCustomer = id
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saat mengambil data: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resev;
+        }
         public static bool update_user(string user, string email, string pass, int id)
         {
             const string updateSql = @"

@@ -29,63 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(historireservasi));
-            homepagebtn = new Button();
-            button2 = new Button();
-            logoutbtn = new Button();
+            pictureBox1 = new PictureBox();
+            BTN_Profil = new Button();
+            BTN_LihaResev = new Button();
+            BTN_Home = new Button();
             dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // homepagebtn
+            // pictureBox1
             // 
-            homepagebtn.BackgroundImage = (Image)resources.GetObject("homepagebtn.BackgroundImage");
-            homepagebtn.BackgroundImageLayout = ImageLayout.Stretch;
-            homepagebtn.Location = new Point(88, 202);
-            homepagebtn.Margin = new Padding(3, 2, 3, 2);
-            homepagebtn.Name = "homepagebtn";
-            homepagebtn.Size = new Size(34, 29);
-            homepagebtn.TabIndex = 0;
-            homepagebtn.UseVisualStyleBackColor = true;
-            homepagebtn.Click += homepagebtn_Click;
+            pictureBox1.BackColor = Color.Gray;
+            pictureBox1.Location = new Point(114, 669);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 50);
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
-            // button2
+            // BTN_Profil
             // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Location = new Point(92, 314);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(30, 28);
-            button2.TabIndex = 1;
-            button2.UseVisualStyleBackColor = true;
+            BTN_Profil.BackColor = Color.White;
+            BTN_Profil.Location = new Point(114, 414);
+            BTN_Profil.Name = "BTN_Profil";
+            BTN_Profil.Size = new Size(33, 36);
+            BTN_Profil.TabIndex = 19;
+            BTN_Profil.UseVisualStyleBackColor = false;
+            BTN_Profil.Click += BTN_Profil_Click;
             // 
-            // logoutbtn
+            // BTN_LihaResev
             // 
-            logoutbtn.BackgroundImage = (Image)resources.GetObject("logoutbtn.BackgroundImage");
-            logoutbtn.BackgroundImageLayout = ImageLayout.Stretch;
-            logoutbtn.Location = new Point(92, 674);
-            logoutbtn.Margin = new Padding(3, 2, 3, 2);
-            logoutbtn.Name = "logoutbtn";
-            logoutbtn.Size = new Size(37, 32);
-            logoutbtn.TabIndex = 2;
-            logoutbtn.UseVisualStyleBackColor = true;
-            logoutbtn.Click += logoutbtn_Click;
+            BTN_LihaResev.BackColor = Color.White;
+            BTN_LihaResev.Location = new Point(114, 311);
+            BTN_LihaResev.Name = "BTN_LihaResev";
+            BTN_LihaResev.Size = new Size(33, 36);
+            BTN_LihaResev.TabIndex = 18;
+            BTN_LihaResev.UseVisualStyleBackColor = false;
+            BTN_LihaResev.Click += BTN_LihaResev_Click;
+            // 
+            // BTN_Home
+            // 
+            BTN_Home.BackColor = Color.White;
+            BTN_Home.Location = new Point(114, 200);
+            BTN_Home.Name = "BTN_Home";
+            BTN_Home.Size = new Size(33, 36);
+            BTN_Home.TabIndex = 17;
+            BTN_Home.UseVisualStyleBackColor = false;
+            BTN_Home.Click += BTN_Home_Click;
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(343, 236);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(304, 153);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1185, 458);
-            dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.Size = new Size(1331, 610);
+            dataGridView1.TabIndex = 16;
             // 
             // historireservasi
             // 
@@ -94,14 +96,17 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1664, 775);
+            Controls.Add(pictureBox1);
+            Controls.Add(BTN_Profil);
+            Controls.Add(BTN_LihaResev);
+            Controls.Add(BTN_Home);
             Controls.Add(dataGridView1);
-            Controls.Add(logoutbtn);
-            Controls.Add(button2);
-            Controls.Add(homepagebtn);
             DoubleBuffered = true;
             Margin = new Padding(3, 2, 3, 2);
             Name = "historireservasi";
             Text = "historireservasi";
+            Load += historireservasi_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -112,5 +117,9 @@
         private Button button2;
         private Button logoutbtn;
         private DataGridView dataGridView1;
+        private PictureBox pictureBox1;
+        private Button BTN_Profil;
+        private Button BTN_LihaResev;
+        private Button BTN_Home;
     }
 }
