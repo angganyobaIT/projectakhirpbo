@@ -258,40 +258,110 @@ AND (m.status_reservasi = 'Selesai' or m.status_reservasi = 'Dibatalkan');
             }
             return resev;
         }
-        public static bool update_user(string user, string email, string pass, int id)
+        public static bool UpdateUser(int customerId, string username, string email, string password, int roleId)
         {
-            const string updateSql = @"
-                    UPDATE Customer
-                       SET username = @username,
-                           email    = @email,
-                           password = @password
-                     WHERE ID_customer = @id";
+            const string selectSql = @"
+        SELECT ID_akun
+          FROM Customer
+         WHERE ID_customer = @customerId";
+
+            const string updateAkunSql = @"
+        UPDATE akun
+           SET Username = @username,
+               Password = @password,
+               ID_role  = @roleId
+         WHERE ID_akun = @akunId";
+
+            const string updateCustomerSql = @"
+        UPDATE Customer
+           SET Email = @email
+         WHERE ID_customer = @customerId";
 
             try
             {
                 using (var conn = Database.GetConnection())
                 {
                     conn.Open();
-                    using (var cmd = new NpgsqlCommand(updateSql, conn))
+                    using (var tx = conn.BeginTransaction())
                     {
-                        cmd.Parameters.AddWithValue("@username", user);
-                        cmd.Parameters.AddWithValue("@email", email);
-                        cmd.Parameters.AddWithValue("@password", pass);
-                        cmd.Parameters.AddWithValue("@id", id);
-                        int affected = cmd.ExecuteNonQuery();
-                        return affected > 0;
+                        // 1. Ambil ID_akun
+                        int akunId;
+                        using (var cmdSel = new NpgsqlCommand(selectSql, conn, tx))
+                        {
+                            cmdSel.Parameters.AddWithValue("@customerId", customerId);
+                            var obj = cmdSel.ExecuteScalar();
+                            if (obj == null)
+                                throw new Exception("Customer dengan ID tersebut tidak ditemukan.");
+                            akunId = Convert.ToInt32(obj);
+                        }
+
+                        // 2. Update tabel akun
+                        using (var cmdAkun = new NpgsqlCommand(updateAkunSql, conn, tx))
+                        {
+                            cmdAkun.Parameters.AddWithValue("@username", username);
+                            cmdAkun.Parameters.AddWithValue("@password", password);
+                            cmdAkun.Parameters.AddWithValue("@roleId", roleId);
+                            cmdAkun.Parameters.AddWithValue("@akunId", akunId);
+                            cmdAkun.ExecuteNonQuery();
+                        }
+
+                        // 3. Update tabel Customer
+                        using (var cmdCust = new NpgsqlCommand(updateCustomerSql, conn, tx))
+                        {
+                            cmdCust.Parameters.AddWithValue("@email", email);
+                            cmdCust.Parameters.AddWithValue("@customerId", customerId);
+                            cmdCust.ExecuteNonQuery();
+                        }
+
+                        tx.Commit();
+                        return true;
                     }
                 }
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(
-                    "Error saat menghapus data menu: " + ex.Message,
+                    "Error saat meng-update user: " + ex.Message,
                     "Error",
                     System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
                 return false;
             }
         }
+        //public static bool update_user(string user, string email, string pass, int id)
+        //{
+        //    const string updateSql = @"
+        //            UPDATE Customer
+        //               SET username = @username,
+        //                   email    = @email,
+        //                   password = @password
+        //             WHERE ID_customer = @id";
+
+        //    try
+        //    {
+        //        using (var conn = Database.GetConnection())
+        //        {
+        //            conn.Open();
+        //            using (var cmd = new NpgsqlCommand(updateSql, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("@username", user);
+        //                cmd.Parameters.AddWithValue("@email", email);
+        //                cmd.Parameters.AddWithValue("@password", pass);
+        //                cmd.Parameters.AddWithValue("@id", id);
+        //                int affected = cmd.ExecuteNonQuery();
+        //                return affected > 0;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Windows.Forms.MessageBox.Show(
+        //            "Error saat menghapus data menu: " + ex.Message,
+        //            "Error",
+        //            System.Windows.Forms.MessageBoxButtons.OK,
+        //            System.Windows.Forms.MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
     }
 }

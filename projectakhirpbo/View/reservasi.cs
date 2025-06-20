@@ -122,7 +122,7 @@ namespace projectakhirpbo.View
                     TanggalReservasi = reserv_date.Value,
                     WaktuReservasi = waktu,
                     JumlahOrang = (int)jumlah_orang.Value,
-                    IdCustomer = UserSession.CurrentUserId,
+                    IdCustomer = UserSession.CurrentCustomerId,
                     IdRuangan = idRuangan,
                     IdTransaksi = idTransaksi
                 };

@@ -40,7 +40,7 @@ namespace projectakhirpbo.View
 
         private void historireservasi_Load(object sender, EventArgs e)
         {
-            List<ReservasiModel> resev = UserController.Get_Resev_history(UserSession.CurrentUserId);
+            List<ReservasiModel> resev = UserController.Get_Resev_history(UserSession.CurrentCustomerId);
             dataGridView1.DataSource = resev;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.Columns["IdReservasi"].Visible = false;

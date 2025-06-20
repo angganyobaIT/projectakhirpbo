@@ -30,7 +30,7 @@ namespace projectakhirpbo.View
             {
                 conn.Open();
                 const string query =
-                    "SELECT username, email FROM Customer WHERE ID_customer = @id";
+                    "select a.username, b.email \r\nfrom akun a\r\njoin customer b using (id_akun) WHERE a.id_akun = @id";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", UserSession.CurrentUserId);
@@ -94,7 +94,7 @@ namespace projectakhirpbo.View
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            bool berhasil = UserController.update_user(newUsername, newEmail, newPassword, UserSession.CurrentUserId);
+            bool berhasil = UserController.UpdateUser(UserSession.CurrentCustomerId,newUsername,newEmail,newPassword,UserSession.CurrentRole);
             if (berhasil)
             {
                 MessageBox.Show("Data Berhasil Dihapus Silahkan Refresh", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -63,6 +63,7 @@ namespace projectakhirpbo
                     UserSession.CurrentUserId = akunId;
                     UserSession.CurrentUsername = username;
                     UserSession.CurrentRole = roleId;
+                    UserSession.CurrentCustomerId = customerId?? 0;
 
                     MessageBox.Show($"Selamat datang, {username}!", "Login Sukses",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);

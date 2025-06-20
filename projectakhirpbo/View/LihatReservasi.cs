@@ -25,7 +25,7 @@ namespace projectakhirpbo.View
         private void LihatReservasi_Load(object sender, EventArgs e)
         {
 
-            List<ReservasiModel> resev = UserController.Get_Resev_Customer(UserSession.CurrentUserId);
+            List<ReservasiModel> resev = UserController.Get_Resev_Customer(UserSession.CurrentCustomerId);
             dataGridView1.DataSource = resev;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.Columns["IdReservasi"].Visible = false;
