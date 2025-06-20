@@ -10,14 +10,17 @@ namespace projectakhirpbo.View
     public partial class pilih_menu : Form
     {
         private int currentReservationId;
-        public pilih_menu(int reservationId)
+        private int id_transaksi;
+        private int id_customer;
+        public pilih_menu(int reservationId,int id_transaksi, int id_customer)
         {
             InitializeComponent();
             currentReservationId = reservationId;
+            this.id_transaksi = id_transaksi;
             LoadMenuData();
             AddButtonColumn();
             SetupPesananGrid();
-
+            this.id_customer = id_customer;
         }
 
         private void LoadMenuData()
@@ -191,7 +194,7 @@ namespace projectakhirpbo.View
                 {
                     MessageBox.Show("Pesanan berhasil disimpan!", "Sukses",
                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    pembayaran pembayaran = new pembayaran(currentReservationId);
+                    pembayaran pembayaran = new pembayaran(currentReservationId,id_transaksi,id_customer);
                     pembayaran.Show();
                 }
                 else

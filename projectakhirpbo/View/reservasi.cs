@@ -118,6 +118,7 @@ namespace projectakhirpbo.View
                 var reservasi = new ReservasiModel
                 {
                     NamaCustomer = tb_namacustomer.Text,
+                    No_telp = tb_telp_customer.Text,
                     TanggalReservasi = reserv_date.Value,
                     WaktuReservasi = waktu,
                     JumlahOrang = (int)jumlah_orang.Value,
@@ -147,7 +148,7 @@ namespace projectakhirpbo.View
                     MessageBox.Show("Reservasi berhasil dibuat!", "Sukses",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi);
+                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi, ReservasiSession.CurrentReservasiId);
                     pilihMenuForm.Show();
                     this.Hide();
                 }

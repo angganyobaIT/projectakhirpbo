@@ -13,6 +13,7 @@ namespace projectakhirpbo.Model
         private string _status { get; set; }
 
         public DateTime waktu_pembayaran { get; set; }
+        public int id_transaksi { get; set; }
 
         public int IdReservasi
         {

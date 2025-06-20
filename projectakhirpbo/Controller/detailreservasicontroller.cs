@@ -22,7 +22,7 @@ namespace projectakhirpbo.Controller
                 {
                     cmd.Parameters.AddWithValue("@menu", idMenu);
                     cmd.Parameters.AddWithValue("@qty", kuantitas);
-                    cmd.Parameters.AddWithValue("@qty", id_reserv);
+                    cmd.Parameters.AddWithValue("@id_reservasi", id_reserv);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
