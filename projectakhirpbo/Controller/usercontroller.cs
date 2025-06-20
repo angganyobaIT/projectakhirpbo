@@ -12,7 +12,7 @@ namespace projectakhirpbo.Controller
             using (var conn = Database.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM customer WHERE username = @username";
+                string query = "SELECT COUNT(*) FROM akun WHERE username = @username";
 
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
@@ -25,32 +25,129 @@ namespace projectakhirpbo.Controller
 
         public static bool RegisterCustomer(Customer newCustomer)
         {
-            try
+            const int ROLE_CUSTOMER = 2;
+
+            using (var conn = Database.GetConnection())
             {
-                using (var conn = Database.GetConnection())
+                conn.Open();
+                using (var tran = conn.BeginTransaction())
                 {
-                    conn.Open();
-                    string query = @"INSERT INTO customer (username, email, password) 
-                                     VALUES (@username, @email, @password)";
-
-                    using (var cmd = new NpgsqlCommand(query, conn))
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@username", newCustomer.Username);
-                        cmd.Parameters.AddWithValue("@email", newCustomer.Email);
-                        cmd.Parameters.AddWithValue("@password", newCustomer.Password);
+                        // 1. Insert ke tabel akun, ambil ID_akun yang baru
+                        string sqlAkun = @"
+                    INSERT INTO akun (username, password, id_role)
+                    VALUES (@username, @password, @role)
+                    RETURNING id_akun;
+                ";
+                        int newAkunId;
+                        using (var cmdAkun = new NpgsqlCommand(sqlAkun, conn, tran))
+                        {
+                            cmdAkun.Parameters.AddWithValue("@username", newCustomer.Username);
+                            cmdAkun.Parameters.AddWithValue("@password", newCustomer.Password);
+                            cmdAkun.Parameters.AddWithValue("@role", ROLE_CUSTOMER);
+                            newAkunId = (int)cmdAkun.ExecuteScalar();
+                        }
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        return rowsAffected > 0;
+                        // 2. Insert ke tabel customer, mengaitkan dengan ID_akun
+                        string sqlCustomer = @"
+                    INSERT INTO customer (email, id_akun)
+                    VALUES (@email, @idAkun);
+                ";
+                        using (var cmdCust = new NpgsqlCommand(sqlCustomer, conn, tran))
+                        {
+                            cmdCust.Parameters.AddWithValue("@email", newCustomer.Email);
+                            cmdCust.Parameters.AddWithValue("@idAkun", newAkunId);
+                            cmdCust.ExecuteNonQuery();
+                        }
+
+                        tran.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        MessageBox.Show("Error saat menyimpan data: " + ex.Message, "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
                     }
                 }
             }
-            catch (Exception ex)
+        }
+
+        public static bool ValidateLogin(
+    string username,
+    string password,
+    out int akunId,
+    out int roleId,
+    out int? customerId)
+        {
+            akunId = 0;
+            roleId = 0;
+            customerId = null;
+
+            const string sql = @"
+        SELECT 
+            a.id_akun, 
+            a.id_role, 
+            c.id_customer
+        FROM akun a
+        LEFT JOIN customer c ON c.id_akun = a.id_akun
+        WHERE a.username = @username
+          AND a.password = @password;
+    ";
+
+            using (var conn = Database.GetConnection())
+            using (var cmd = new NpgsqlCommand(sql, conn))
             {
-                MessageBox.Show("Error saat menyimpan data: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read())
+                        return false;
+
+                    akunId = reader.GetInt32(reader.GetOrdinal("id_akun"));
+                    roleId = reader.GetInt32(reader.GetOrdinal("id_role"));
+
+                    if (!reader.IsDBNull(reader.GetOrdinal("id_customer")))
+                        customerId = reader.GetInt32(reader.GetOrdinal("id_customer"));
+
+                    return true;
+                }
             }
         }
+
+        //public static bool RegisterCustomer(Customer newCustomer)
+        //{
+        //    try
+        //    {
+        //        using (var conn = Database.GetConnection())
+        //        {
+        //            conn.Open();
+        //            string query = @"INSERT INTO customer (username, email, password) 
+        //                             VALUES (@username, @email, @password)";
+
+        //            using (var cmd = new NpgsqlCommand(query, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("@username", newCustomer.Username);
+        //                cmd.Parameters.AddWithValue("@email", newCustomer.Email);
+        //                cmd.Parameters.AddWithValue("@password", newCustomer.Password);
+
+        //                int rowsAffected = cmd.ExecuteNonQuery();
+        //                return rowsAffected > 0;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error saat menyimpan data: " + ex.Message, "Error",
+        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
         public static List<ReservasiModel> Get_Resev_Customer(int id)
         {
             var resev = new List<ReservasiModel>();
