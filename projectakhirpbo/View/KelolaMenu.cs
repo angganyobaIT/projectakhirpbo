@@ -112,5 +112,11 @@ namespace projectakhirpbo.View
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UserSession.ClearSession();
+            this.Close();
+        }
     }
 }
