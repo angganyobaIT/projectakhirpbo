@@ -43,8 +43,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Gray;
-            pictureBox1.Location = new Point(97, 946);
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(57, 948);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(41, 43);
             pictureBox1.TabIndex = 10;
@@ -68,30 +70,36 @@
             // 
             // BTN_Cemilan
             // 
-            BTN_Cemilan.BackColor = Color.Gray;
-            BTN_Cemilan.Location = new Point(748, 275);
+            BTN_Cemilan.BackColor = Color.White;
+            BTN_Cemilan.BackgroundImage = (Image)resources.GetObject("BTN_Cemilan.BackgroundImage");
+            BTN_Cemilan.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Cemilan.Location = new Point(704, 107);
             BTN_Cemilan.Name = "BTN_Cemilan";
-            BTN_Cemilan.Size = new Size(139, 57);
+            BTN_Cemilan.Size = new Size(185, 172);
             BTN_Cemilan.TabIndex = 13;
             BTN_Cemilan.TabStop = false;
             BTN_Cemilan.Click += BTN_Cemilan_Click;
             // 
             // BTN_Semua
             // 
-            BTN_Semua.BackColor = Color.Gray;
-            BTN_Semua.Location = new Point(110, 275);
+            BTN_Semua.BackColor = Color.White;
+            BTN_Semua.BackgroundImage = (Image)resources.GetObject("BTN_Semua.BackgroundImage");
+            BTN_Semua.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Semua.Location = new Point(97, 115);
             BTN_Semua.Name = "BTN_Semua";
-            BTN_Semua.Size = new Size(120, 57);
+            BTN_Semua.Size = new Size(158, 164);
             BTN_Semua.TabIndex = 12;
             BTN_Semua.TabStop = false;
             BTN_Semua.Click += BTN_Semua_Click;
             // 
             // BTN_Makanan
             // 
-            BTN_Makanan.BackColor = Color.Gray;
-            BTN_Makanan.Location = new Point(338, 275);
+            BTN_Makanan.BackColor = Color.White;
+            BTN_Makanan.BackgroundImage = (Image)resources.GetObject("BTN_Makanan.BackgroundImage");
+            BTN_Makanan.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Makanan.Location = new Point(325, 115);
             BTN_Makanan.Name = "BTN_Makanan";
-            BTN_Makanan.Size = new Size(128, 57);
+            BTN_Makanan.Size = new Size(153, 164);
             BTN_Makanan.TabIndex = 11;
             BTN_Makanan.TabStop = false;
             BTN_Makanan.Click += BTN_Makanan_Click;

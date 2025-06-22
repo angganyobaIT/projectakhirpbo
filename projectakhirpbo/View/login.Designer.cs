@@ -34,23 +34,26 @@
             btnmasuk = new Button();
             linkregister = new LinkLabel();
             label2 = new Label();
-            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // tbusernamelog
             // 
             tbusernamelog.BorderStyle = BorderStyle.None;
-            tbusernamelog.Location = new Point(501, 245);
+            tbusernamelog.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbusernamelog.Location = new Point(603, 256);
+            tbusernamelog.Margin = new Padding(3, 2, 3, 2);
             tbusernamelog.Name = "tbusernamelog";
-            tbusernamelog.Size = new Size(467, 20);
+            tbusernamelog.Size = new Size(621, 19);
             tbusernamelog.TabIndex = 21;
             // 
             // tbpasswordlog
             // 
             tbpasswordlog.BorderStyle = BorderStyle.None;
-            tbpasswordlog.Location = new Point(489, 331);
+            tbpasswordlog.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbpasswordlog.Location = new Point(603, 346);
+            tbpasswordlog.Margin = new Padding(3, 2, 3, 2);
             tbpasswordlog.Name = "tbpasswordlog";
-            tbpasswordlog.Size = new Size(467, 20);
+            tbpasswordlog.Size = new Size(409, 19);
             tbpasswordlog.TabIndex = 22;
             // 
             // btnmasuk
@@ -61,9 +64,10 @@
             btnmasuk.ForeColor = SystemColors.ButtonFace;
             btnmasuk.Image = (Image)resources.GetObject("btnmasuk.Image");
             btnmasuk.ImageAlign = ContentAlignment.TopLeft;
-            btnmasuk.Location = new Point(467, 405);
+            btnmasuk.Location = new Point(583, 495);
+            btnmasuk.Margin = new Padding(3, 2, 3, 2);
             btnmasuk.Name = "btnmasuk";
-            btnmasuk.Size = new Size(522, 42);
+            btnmasuk.Size = new Size(662, 47);
             btnmasuk.TabIndex = 23;
             btnmasuk.Text = "Masuk";
             btnmasuk.UseVisualStyleBackColor = false;
@@ -73,11 +77,11 @@
             // 
             linkregister.AutoSize = true;
             linkregister.BackColor = Color.Transparent;
-            linkregister.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkregister.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkregister.LinkColor = Color.Black;
-            linkregister.Location = new Point(757, 454);
+            linkregister.Location = new Point(966, 555);
             linkregister.Name = "linkregister";
-            linkregister.Size = new Size(57, 17);
+            linkregister.Size = new Size(62, 16);
             linkregister.TabIndex = 25;
             linkregister.TabStop = true;
             linkregister.Text = "Register";
@@ -87,41 +91,28 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(642, 454);
+            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(846, 555);
             label2.Name = "label2";
-            label2.Size = new Size(120, 17);
+            label2.Size = new Size(117, 16);
             label2.TabIndex = 24;
-            label2.Text = "Sudah punya akun?";
+            label2.Text = "Belum punya akun?";
             label2.Click += label2_Click;
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.BackColor = Color.Transparent;
-            linkLabel1.LinkColor = Color.Black;
-            linkLabel1.Location = new Point(820, 454);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(58, 20);
-            linkLabel1.TabIndex = 26;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "admin?";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Login;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1053, 594);
-            Controls.Add(linkLabel1);
+            ClientSize = new Size(1329, 614);
             Controls.Add(linkregister);
             Controls.Add(label2);
             Controls.Add(btnmasuk);
             Controls.Add(tbpasswordlog);
             Controls.Add(tbusernamelog);
             DoubleBuffered = true;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "login";
             Load += login_Load;
             ResumeLayout(false);
@@ -135,6 +126,5 @@
         private Button btnmasuk;
         private LinkLabel linkregister;
         private Label label2;
-        private LinkLabel linkLabel1;
     }
 }

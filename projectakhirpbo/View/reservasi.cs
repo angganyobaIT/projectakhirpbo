@@ -17,6 +17,7 @@ namespace projectakhirpbo.View
         public static class ReservasiSession
         {
             public static int CurrentReservasiId { get; set; }
+            public static string CurrentName { get; set; }
         }
 
         public reservasi()
@@ -131,12 +132,14 @@ namespace projectakhirpbo.View
                 {
                     // Simpan ID reservasi untuk proses selanjutnya
                     ReservasiSession.CurrentReservasiId = idReservasi;
+                    ReservasiSession.CurrentName = tb_namacustomer.Text;
+                    string nama = tb_namacustomer.Text;
 
                     // Tampilkan notifikasi sukses
                     MessageBox.Show("Reservasi berhasil dibuat!", "Sukses",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi, UserSession.CurrentUserId);
+                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi, UserSession.CurrentUserId, nama);
                     pilihMenuForm.Show();
                     this.Hide();
                 }

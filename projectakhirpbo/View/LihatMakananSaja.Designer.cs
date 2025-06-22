@@ -53,13 +53,16 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(91, 419);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(1068, 485);
             dataGridView1.TabIndex = 0;
             // 
             // BTN_semua
             // 
             BTN_semua.BackColor = Color.White;
-            BTN_semua.Location = new Point(61, 226);
+            BTN_semua.BackgroundImage = (Image)resources.GetObject("BTN_semua.BackgroundImage");
+            BTN_semua.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_semua.Location = new Point(100, 129);
             BTN_semua.Name = "BTN_semua";
             BTN_semua.Size = new Size(139, 149);
             BTN_semua.TabIndex = 1;
@@ -69,7 +72,9 @@
             // BTN_Minuman
             // 
             BTN_Minuman.BackColor = Color.White;
-            BTN_Minuman.Location = new Point(549, 235);
+            BTN_Minuman.BackgroundImage = (Image)resources.GetObject("BTN_Minuman.BackgroundImage");
+            BTN_Minuman.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Minuman.Location = new Point(554, 129);
             BTN_Minuman.Name = "BTN_Minuman";
             BTN_Minuman.Size = new Size(120, 153);
             BTN_Minuman.TabIndex = 2;
@@ -79,7 +84,9 @@
             // BTN_Cemilan
             // 
             BTN_Cemilan.BackColor = Color.White;
-            BTN_Cemilan.Location = new Point(740, 235);
+            BTN_Cemilan.BackgroundImage = (Image)resources.GetObject("BTN_Cemilan.BackgroundImage");
+            BTN_Cemilan.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Cemilan.Location = new Point(741, 133);
             BTN_Cemilan.Name = "BTN_Cemilan";
             BTN_Cemilan.Size = new Size(139, 149);
             BTN_Cemilan.TabIndex = 3;
@@ -89,7 +96,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.White;
-            pictureBox1.Location = new Point(77, 946);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(58, 947);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(41, 43);
             pictureBox1.TabIndex = 4;

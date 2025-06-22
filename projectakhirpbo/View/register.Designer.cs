@@ -58,7 +58,7 @@
             tbusername.Location = new Point(765, 206);
             tbusername.Margin = new Padding(3, 2, 3, 2);
             tbusername.Name = "tbusername";
-            tbusername.Size = new Size(736, 32);
+            tbusername.Size = new Size(666, 32);
             tbusername.TabIndex = 8;
             tbusername.TextChanged += tbusername_TextChanged;
             // 
@@ -113,7 +113,7 @@
             tbemail.Location = new Point(765, 319);
             tbemail.Margin = new Padding(3, 2, 3, 2);
             tbemail.Name = "tbemail";
-            tbemail.Size = new Size(736, 32);
+            tbemail.Size = new Size(666, 32);
             tbemail.TabIndex = 18;
             tbemail.TextChanged += tbemail_TextChanged;
             // 
@@ -124,7 +124,7 @@
             tbpassword.Location = new Point(765, 431);
             tbpassword.Margin = new Padding(3, 2, 3, 2);
             tbpassword.Name = "tbpassword";
-            tbpassword.Size = new Size(697, 32);
+            tbpassword.Size = new Size(666, 32);
             tbpassword.TabIndex = 19;
             tbpassword.TextChanged += tbpassword_TextChanged;
             // 
@@ -135,7 +135,7 @@
             tbconfirmpass.Location = new Point(765, 543);
             tbconfirmpass.Margin = new Padding(3, 2, 3, 2);
             tbconfirmpass.Name = "tbconfirmpass";
-            tbconfirmpass.Size = new Size(697, 32);
+            tbconfirmpass.Size = new Size(666, 32);
             tbconfirmpass.TabIndex = 20;
             tbconfirmpass.TextChanged += tbconfirmpass_TextChanged;
             // 
@@ -143,7 +143,7 @@
             // 
             checkshow1.AutoSize = true;
             checkshow1.BackColor = Color.Transparent;
-            checkshow1.Location = new Point(1487, 437);
+            checkshow1.Location = new Point(1446, 437);
             checkshow1.Margin = new Padding(3, 2, 3, 2);
             checkshow1.Name = "checkshow1";
             checkshow1.Size = new Size(55, 19);
@@ -156,7 +156,7 @@
             // 
             checkshow2.AutoSize = true;
             checkshow2.BackColor = Color.Transparent;
-            checkshow2.Location = new Point(1487, 550);
+            checkshow2.Location = new Point(1448, 550);
             checkshow2.Margin = new Padding(3, 2, 3, 2);
             checkshow2.Name = "checkshow2";
             checkshow2.Size = new Size(55, 19);

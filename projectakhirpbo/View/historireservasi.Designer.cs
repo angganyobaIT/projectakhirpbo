@@ -40,10 +40,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Gray;
-            pictureBox1.Location = new Point(114, 669);
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(76, 705);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(48, 50);
+            pictureBox1.Size = new Size(47, 43);
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -51,7 +53,13 @@
             // BTN_Profil
             // 
             BTN_Profil.BackColor = Color.White;
-            BTN_Profil.Location = new Point(114, 414);
+            BTN_Profil.BackgroundImage = (Image)resources.GetObject("BTN_Profil.BackgroundImage");
+            BTN_Profil.BackgroundImageLayout = ImageLayout.Stretch;
+            BTN_Profil.FlatAppearance.BorderSize = 0;
+            BTN_Profil.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_Profil.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_Profil.FlatStyle = FlatStyle.Flat;
+            BTN_Profil.Location = new Point(90, 563);
             BTN_Profil.Name = "BTN_Profil";
             BTN_Profil.Size = new Size(33, 36);
             BTN_Profil.TabIndex = 19;
@@ -61,7 +69,13 @@
             // BTN_LihaResev
             // 
             BTN_LihaResev.BackColor = Color.White;
-            BTN_LihaResev.Location = new Point(114, 311);
+            BTN_LihaResev.BackgroundImage = (Image)resources.GetObject("BTN_LihaResev.BackgroundImage");
+            BTN_LihaResev.BackgroundImageLayout = ImageLayout.Stretch;
+            BTN_LihaResev.FlatAppearance.BorderSize = 0;
+            BTN_LihaResev.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_LihaResev.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_LihaResev.FlatStyle = FlatStyle.Flat;
+            BTN_LihaResev.Location = new Point(91, 391);
             BTN_LihaResev.Name = "BTN_LihaResev";
             BTN_LihaResev.Size = new Size(33, 36);
             BTN_LihaResev.TabIndex = 18;
@@ -71,7 +85,13 @@
             // BTN_Home
             // 
             BTN_Home.BackColor = Color.White;
-            BTN_Home.Location = new Point(114, 200);
+            BTN_Home.BackgroundImage = (Image)resources.GetObject("BTN_Home.BackgroundImage");
+            BTN_Home.BackgroundImageLayout = ImageLayout.Stretch;
+            BTN_Home.FlatAppearance.BorderSize = 0;
+            BTN_Home.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_Home.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_Home.FlatStyle = FlatStyle.Flat;
+            BTN_Home.Location = new Point(90, 200);
             BTN_Home.Name = "BTN_Home";
             BTN_Home.Size = new Size(33, 36);
             BTN_Home.TabIndex = 17;
@@ -80,13 +100,15 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(304, 153);
+            dataGridView1.Location = new Point(326, 132);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1331, 610);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(1221, 548);
             dataGridView1.TabIndex = 16;
             // 
             // historireservasi
@@ -120,6 +142,6 @@
         private PictureBox pictureBox1;
         private Button BTN_Profil;
         private Button BTN_LihaResev;
-        private Button BTN_Home;
+        public Button BTN_Home;
     }
 }

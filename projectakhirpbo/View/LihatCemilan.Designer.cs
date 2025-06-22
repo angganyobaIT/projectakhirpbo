@@ -44,7 +44,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.White;
-            pictureBox1.Location = new Point(79, 946);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(58, 945);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(41, 43);
             pictureBox1.TabIndex = 9;
@@ -54,7 +56,9 @@
             // BTN_MAKAN
             // 
             BTN_MAKAN.BackColor = Color.White;
-            BTN_MAKAN.Location = new Point(330, 239);
+            BTN_MAKAN.BackgroundImage = (Image)resources.GetObject("BTN_MAKAN.BackgroundImage");
+            BTN_MAKAN.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_MAKAN.Location = new Point(326, 130);
             BTN_MAKAN.Name = "BTN_MAKAN";
             BTN_MAKAN.Size = new Size(139, 149);
             BTN_MAKAN.TabIndex = 8;
@@ -64,7 +68,9 @@
             // BTN_Minuman
             // 
             BTN_Minuman.BackColor = Color.White;
-            BTN_Minuman.Location = new Point(551, 235);
+            BTN_Minuman.BackgroundImage = (Image)resources.GetObject("BTN_Minuman.BackgroundImage");
+            BTN_Minuman.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Minuman.Location = new Point(546, 126);
             BTN_Minuman.Name = "BTN_Minuman";
             BTN_Minuman.Size = new Size(120, 153);
             BTN_Minuman.TabIndex = 7;
@@ -74,7 +80,9 @@
             // BTN_semua
             // 
             BTN_semua.BackColor = Color.White;
-            BTN_semua.Location = new Point(79, 235);
+            BTN_semua.BackgroundImage = (Image)resources.GetObject("BTN_semua.BackgroundImage");
+            BTN_semua.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_semua.Location = new Point(105, 130);
             BTN_semua.Name = "BTN_semua";
             BTN_semua.Size = new Size(139, 149);
             BTN_semua.TabIndex = 6;
@@ -93,6 +101,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(93, 419);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(1068, 485);
             dataGridView1.TabIndex = 5;
             // 

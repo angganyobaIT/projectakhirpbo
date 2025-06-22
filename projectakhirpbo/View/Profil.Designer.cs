@@ -44,7 +44,13 @@
             // BTN_Profil
             // 
             BTN_Profil.BackColor = Color.White;
-            BTN_Profil.Location = new Point(148, 571);
+            BTN_Profil.BackgroundImage = (Image)resources.GetObject("BTN_Profil.BackgroundImage");
+            BTN_Profil.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Profil.FlatAppearance.BorderSize = 0;
+            BTN_Profil.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_Profil.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_Profil.FlatStyle = FlatStyle.Flat;
+            BTN_Profil.Location = new Point(107, 569);
             BTN_Profil.Name = "BTN_Profil";
             BTN_Profil.Size = new Size(33, 36);
             BTN_Profil.TabIndex = 17;
@@ -53,7 +59,13 @@
             // BTN_LihaResev
             // 
             BTN_LihaResev.BackColor = Color.White;
-            BTN_LihaResev.Location = new Point(148, 425);
+            BTN_LihaResev.BackgroundImage = (Image)resources.GetObject("BTN_LihaResev.BackgroundImage");
+            BTN_LihaResev.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_LihaResev.FlatAppearance.BorderSize = 0;
+            BTN_LihaResev.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_LihaResev.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_LihaResev.FlatStyle = FlatStyle.Flat;
+            BTN_LihaResev.Location = new Point(107, 425);
             BTN_LihaResev.Name = "BTN_LihaResev";
             BTN_LihaResev.Size = new Size(33, 36);
             BTN_LihaResev.TabIndex = 16;
@@ -63,9 +75,15 @@
             // BTN_Home
             // 
             BTN_Home.BackColor = Color.White;
-            BTN_Home.Location = new Point(148, 271);
+            BTN_Home.BackgroundImage = (Image)resources.GetObject("BTN_Home.BackgroundImage");
+            BTN_Home.BackgroundImageLayout = ImageLayout.Zoom;
+            BTN_Home.FlatAppearance.BorderSize = 0;
+            BTN_Home.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            BTN_Home.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            BTN_Home.FlatStyle = FlatStyle.Flat;
+            BTN_Home.Location = new Point(103, 271);
             BTN_Home.Name = "BTN_Home";
-            BTN_Home.Size = new Size(33, 36);
+            BTN_Home.Size = new Size(37, 38);
             BTN_Home.TabIndex = 15;
             BTN_Home.UseVisualStyleBackColor = false;
             BTN_Home.Click += BTN_Home_Click;
@@ -124,10 +142,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Gray;
-            pictureBox1.Location = new Point(148, 907);
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(107, 907);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 50);
+            pictureBox1.Size = new Size(42, 44);
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click_1;

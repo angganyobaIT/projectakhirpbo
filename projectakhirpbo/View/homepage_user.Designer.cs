@@ -131,7 +131,7 @@
             // 
             btnallmenu.BackColor = Color.White;
             btnallmenu.BackgroundImage = (Image)resources.GetObject("btnallmenu.BackgroundImage");
-            btnallmenu.BackgroundImageLayout = ImageLayout.Stretch;
+            btnallmenu.BackgroundImageLayout = ImageLayout.Zoom;
             btnallmenu.FlatAppearance.BorderSize = 0;
             btnallmenu.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnallmenu.FlatAppearance.MouseOverBackColor = Color.Transparent;

@@ -34,6 +34,7 @@
             dataGridView1 = new DataGridView();
             button2 = new Button();
             dgrid_viewmenu = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgrid_viewmenu).BeginInit();
             SuspendLayout();
@@ -42,9 +43,10 @@
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.Location = new Point(51, 942);
+            button1.Location = new Point(45, 706);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(45, 37);
+            button1.Size = new Size(39, 28);
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             // 
@@ -53,9 +55,9 @@
             lblTotal.AutoSize = true;
             lblTotal.BackColor = Color.White;
             lblTotal.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(1350, 114);
+            lblTotal.Location = new Point(1181, 86);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(0, 24);
+            lblTotal.Size = new Size(0, 19);
             lblTotal.TabIndex = 1;
             // 
             // dataGridView1
@@ -63,10 +65,11 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(1335, 276);
+            dataGridView1.Location = new Point(1168, 207);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(501, 340);
+            dataGridView1.Size = new Size(438, 255);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -74,9 +77,10 @@
             // 
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Location = new Point(1310, 719);
+            button2.Location = new Point(1146, 539);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(550, 69);
+            button2.Size = new Size(481, 52);
             button2.TabIndex = 3;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
@@ -95,27 +99,39 @@
             dgrid_viewmenu.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgrid_viewmenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgrid_viewmenu.GridColor = Color.Black;
-            dgrid_viewmenu.Location = new Point(51, 361);
+            dgrid_viewmenu.Location = new Point(45, 271);
+            dgrid_viewmenu.Margin = new Padding(3, 2, 3, 2);
             dgrid_viewmenu.Name = "dgrid_viewmenu";
             dgrid_viewmenu.RowHeadersWidth = 51;
-            dgrid_viewmenu.Size = new Size(1135, 512);
+            dgrid_viewmenu.Size = new Size(993, 384);
             dgrid_viewmenu.TabIndex = 4;
             dgrid_viewmenu.CellContentClick += dgrid_viewmenu_CellContentClick;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1173, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 5;
+            label1.Text = "label1";
+            // 
             // pilih_menu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1902, 1033);
+            ClientSize = new Size(1664, 775);
+            Controls.Add(label1);
             Controls.Add(dgrid_viewmenu);
             Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(lblTotal);
             Controls.Add(button1);
             DoubleBuffered = true;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "pilih_menu";
             Text = "pilih_menu";
             Load += pilih_menu_Load;
@@ -132,5 +148,6 @@
         private DataGridView dataGridView1;
         private Button button2;
         private DataGridView dgrid_viewmenu;
+        private Label label1;
     }
 }

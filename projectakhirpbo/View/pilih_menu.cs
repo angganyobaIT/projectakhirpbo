@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using projectakhirpbo.Controller;
 using projectakhirpbo.Model;
+using  projectakhirpbo.View;
 using static projectakhirpbo.Model.MenuModel;
 
 namespace projectakhirpbo.View
@@ -12,7 +13,8 @@ namespace projectakhirpbo.View
         private int currentReservationId;
         private int id_transaksi;
         private int id_customer;
-        public pilih_menu(int reservationId,int id_transaksi, int id_customer)
+        private string nama_resev;
+        public pilih_menu(int reservationId,int id_transaksi, int id_customer, string nama_resev)
         {
             InitializeComponent();
             currentReservationId = reservationId;
@@ -21,6 +23,7 @@ namespace projectakhirpbo.View
             AddButtonColumn();
             SetupPesananGrid();
             this.id_customer = id_customer;
+            this.nama_resev = nama_resev;
         }
 
         private void LoadMenuData()
@@ -169,7 +172,7 @@ namespace projectakhirpbo.View
 
         private void pilih_menu_Load(object sender, EventArgs e)
         {
-
+            label1.Text = nama_resev;
         }
 
         private void button2_Click(object sender, EventArgs e)

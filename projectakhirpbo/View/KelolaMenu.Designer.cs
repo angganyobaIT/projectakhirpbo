@@ -92,6 +92,8 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(325, 185);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
@@ -104,23 +106,29 @@
             // 
             // btnmasuk
             // 
-            btnmasuk.Location = new Point(325, 138);
+            btnmasuk.BackgroundImage = (Image)resources.GetObject("btnmasuk.BackgroundImage");
+            btnmasuk.BackgroundImageLayout = ImageLayout.Zoom;
+            btnmasuk.FlatAppearance.BorderSize = 0;
+            btnmasuk.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnmasuk.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnmasuk.FlatStyle = FlatStyle.Flat;
+            btnmasuk.Location = new Point(333, 138);
             btnmasuk.Margin = new Padding(3, 2, 3, 2);
             btnmasuk.Name = "btnmasuk";
-            btnmasuk.Size = new Size(172, 22);
+            btnmasuk.Size = new Size(197, 43);
             btnmasuk.TabIndex = 5;
-            btnmasuk.Text = "TAMBAH MENU";
             btnmasuk.UseVisualStyleBackColor = true;
             btnmasuk.Click += btnmasuk_Click;
             // 
             // button6
             // 
-            button6.Location = new Point(1431, 138);
+            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
+            button6.BackgroundImageLayout = ImageLayout.Zoom;
+            button6.Location = new Point(1410, 138);
             button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(158, 22);
+            button6.Size = new Size(197, 43);
             button6.TabIndex = 6;
-            button6.Text = "HISTORY MENU";
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
