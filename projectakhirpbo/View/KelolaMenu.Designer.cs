@@ -122,6 +122,7 @@
             button6.TabIndex = 6;
             button6.Text = "HISTORY MENU";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // KelolaMenu
             // 

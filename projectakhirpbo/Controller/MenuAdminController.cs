@@ -143,13 +143,7 @@ VALUES (@nama,@harga,@dihapus,@id_kategori)";
         public static bool Update_Menu(M_Menu menu)
         {
             Tambah_Menu(menu);
-            //const string sql = @"
-            //    insert menu
-            //    SET nama_menu = @nama,
-            //        harga      = @harga,
-            //        id_kategori= @id_kategori
-            //    WHERE id_menu = @id_menu;
-            //";
+
 
             const string sql2 = @"
                 UPDATE menu
@@ -164,9 +158,6 @@ VALUES (@nama,@harga,@dihapus,@id_kategori)";
                     conn.Open();
                     using (var cmd = new NpgsqlCommand(sql2, conn))
                     {
-                        //cmd.Parameters.AddWithValue("@nama", menu.nama_menu);
-                        //cmd.Parameters.AddWithValue("@harga", menu.harga);
-                        //cmd.Parameters.AddWithValue("@id_kategori", menu.id_kategori);
                         cmd.Parameters.AddWithValue("@id_menu", menu.id_menu);
                         int affected = cmd.ExecuteNonQuery();
                         return affected > 0;

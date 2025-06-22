@@ -72,5 +72,10 @@ namespace projectakhirpbo.View
                 textBox2.UseSystemPasswordChar = true;
             }
         }
+
+        private void Login_Admin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

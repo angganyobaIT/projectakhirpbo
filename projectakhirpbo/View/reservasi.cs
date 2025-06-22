@@ -85,20 +85,8 @@ namespace projectakhirpbo.View
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // Konversi pilihan ruangan ke ID (1 untuk Indoor, 2 untuk Outdoor)
             int idRuangan = cb_pilihanruangan.SelectedItem.ToString() == "Indoor" ? 1 : 2;
 
-            // Buat objek reservasi
-            //var reservasi = new ReservasiModel
-            //{
-            //    NamaCustomer = tb_namacustomer.Text,
-            //    TanggalReservasi = reserv_date.Value,
-            //    WaktuReservasi = waktu,
-            //    JumlahOrang = (int)jumlah_orang.Value,
-            //    IdRuangan = idRuangan,
-            //    IdCustomer = UserSession.CurrentUserId // Menggunakan ID dari session
-            //};
             var pembayaran = new pembayaranmodel
             {
                 waktu_pembayaran = DateTime.Now
@@ -148,7 +136,7 @@ namespace projectakhirpbo.View
                     MessageBox.Show("Reservasi berhasil dibuat!", "Sukses",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi, ReservasiSession.CurrentReservasiId);
+                    pilih_menu pilihMenuForm = new pilih_menu(idReservasi,idTransaksi, UserSession.CurrentUserId);
                     pilihMenuForm.Show();
                     this.Hide();
                 }

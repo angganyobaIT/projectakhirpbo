@@ -99,46 +99,7 @@ namespace projectakhirpbo
                 MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //string username = tbusernamelog.Text.Trim();
-            //string password = tbpasswordlog.Text.Trim();
 
-            //try
-            //{
-            //    if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            //    {
-            //        MessageBox.Show("Username dan password tidak boleh kosong", "Peringatan",
-            //                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-
-            //    int customerId = CustomerController.ValidateCustomer(username, password);
-
-            //    if (customerId > 0) // Jika ID customer valid (tidak 0)
-            //    {
-            //        // Simpan informasi customer ke sesi
-            //        UserSession.CurrentUserId = customerId;
-            //        UserSession.CurrentUsername = username;
-
-            //        // Tampilkan pesan sukses
-            //        MessageBox.Show($"Selamat datang, {username}!", "Login Sukses",
-            //                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //        // Buka form utama
-            //        Homepage homepage = new Homepage();
-            //        homepage.Show();
-            //        this.Hide();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Username atau password salah", "Autentikasi Gagal",
-            //                      MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error",
-            //                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

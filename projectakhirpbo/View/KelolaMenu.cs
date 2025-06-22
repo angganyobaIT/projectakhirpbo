@@ -118,5 +118,12 @@ namespace projectakhirpbo.View
             UserSession.ClearSession();
             this.Close();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            HistoryMenu men = new HistoryMenu();
+            men.ShowDialog();
+
+        }
     }
 }

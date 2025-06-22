@@ -34,7 +34,6 @@ namespace projectakhirpbo.Controller
                 {
                     try
                     {
-                        // 1. Insert ke tabel akun, ambil ID_akun yang baru
                         string sqlAkun = @"
                     INSERT INTO akun (username, password, id_role)
                     VALUES (@username, @password, @role)
@@ -49,7 +48,6 @@ namespace projectakhirpbo.Controller
                             newAkunId = (int)cmdAkun.ExecuteScalar();
                         }
 
-                        // 2. Insert ke tabel customer, mengaitkan dengan ID_akun
                         string sqlCustomer = @"
                     INSERT INTO customer (email, id_akun)
                     VALUES (@email, @idAkun);

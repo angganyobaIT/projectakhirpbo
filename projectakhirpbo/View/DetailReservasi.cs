@@ -30,7 +30,7 @@ namespace projectakhirpbo.View
             string sql2 = @"select sum(kuantitas_menu * b.harga)
 from detail_reservasi a
 join menu b using (id_menu)
-where id_reservasi = @idreservasi";
+where a.id_reservasi = @idreservasi";
             using (var conn = Database.GetConnection())
             {
                 try

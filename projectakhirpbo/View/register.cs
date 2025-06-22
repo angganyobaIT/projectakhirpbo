@@ -46,7 +46,7 @@ namespace projectakhirpbo
             }
 
             // Validasi email
-            string email = tbemail.Text.Trim().ToLower();
+            string email = tbemail.Text.Trim();
             if (!(email.EndsWith("@gmail.com") && !(email.EndsWith("@yahoo.com"))))
             {
                 MessageBox.Show("Hanya email @gmail.com atau @yahoo.com yang diterima!",

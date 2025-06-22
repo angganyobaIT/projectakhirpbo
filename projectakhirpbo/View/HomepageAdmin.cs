@@ -25,7 +25,7 @@ namespace projectakhirpbo.View
             int id = UserSession.CurrentUserId;
             string name = UserSession.CurrentUsername;
 
-            string sql_data = "select a.id_reservasi, a.nama_lengkap,a.tanggal_kedatangan,a.waktu_kedatangan,c.jenis_ruangan,b.status_pembayaran,b.waktu_transaksi from reservasi a join transaksi b using (id_transaksi) join ruangan c using (id_ruangan)";
+            string sql_data = "select a.id_reservasi, a.nama_lengkap,a.tanggal_kedatangan,a.waktu_kedatangan,c.jenis_ruangan,b.status_pembayaran,b.waktu_transaksi from reservasi a join transaksi b using (id_transaksi) join ruangan c using (id_ruangan) where a.status_reservasi != 'Selesai'";
 
             using (var conn = Database.GetConnection())
             {
@@ -48,6 +48,7 @@ namespace projectakhirpbo.View
 
 
             LB_admin_nama.Text = name;
+
             string sql = @"select count (id_reservasi) from reservasi where status_reservasi != 'Selesai' ;";
             using (var conn = Database.GetConnection())
             {
