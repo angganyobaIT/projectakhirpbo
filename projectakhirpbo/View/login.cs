@@ -102,11 +102,5 @@ namespace projectakhirpbo
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Login_Admin admin = new Login_Admin();
-            admin.Show();
-            this.Hide();
-        }
     }
 }    

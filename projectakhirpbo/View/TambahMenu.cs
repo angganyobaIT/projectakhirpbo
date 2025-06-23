@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using projectakhirpbo.Controller;
+using projectakhirpbo.Model;
 
 namespace projectakhirpbo.View
 {
@@ -58,10 +59,41 @@ namespace projectakhirpbo.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex >= 0)
+            if(string.IsNullOrWhiteSpace(TB_nama_makanan.Text))
             {
-                var selectedId = comboBox1.SelectedValue;
-                var selectedText = comboBox1.Text;
+                MessageBox.Show("Masukkan nama menu!");
+                return;
+            }
+            if (!decimal.TryParse(TB_Harga.Text, out decimal harga) || harga < 0)
+            {
+                MessageBox.Show("Harga tidak valid!");
+                return;
+            }
+            if (comboBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih kategori terlebih dahulu!");
+                return;
+            }
+            M_Menu menu = new M_Menu
+            {
+                nama_menu = TB_nama_makanan.Text.Trim(),
+                harga = ((int)harga),
+                Dihapus = 0,
+                id_kategori = (int)comboBox1.SelectedValue
+
+            };
+
+            bool sukses = MenuAdminController.Tambah_Menu(menu);
+            if (sukses)
+            {
+                MessageBox.Show("Data menu berhasil disimpan!");
+                comboBox1.SelectedIndex = -1;
+                TB_nama_makanan.Clear();
+                TB_Harga.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Gagal menyimpan data menu.");
             }
         }
 

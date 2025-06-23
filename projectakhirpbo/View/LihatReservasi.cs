@@ -120,7 +120,9 @@ namespace projectakhirpbo.View
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             UserSession.ClearSession();
-            this.Close();
+            this.Hide();
+            login login = new login();
+            login.Show();
         }
 
         private void BTN_History_Click(object sender, EventArgs e)

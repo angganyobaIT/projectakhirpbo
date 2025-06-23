@@ -153,7 +153,9 @@ namespace projectakhirpbo.View
         private void button5_Click(object sender, EventArgs e)
         {
             UserSession.ClearSession();
-            this.Close();
+            this.Hide();
+            login login = new login();
+            login.Show();
         }
     }
 }

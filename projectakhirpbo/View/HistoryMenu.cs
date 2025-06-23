@@ -30,9 +30,9 @@ namespace projectakhirpbo.View
                 dataGridView1.Columns.Remove("btnRestore");
             var btnRestore = new DataGridViewButtonColumn
             {
-                HeaderText = "Restroe",
+                HeaderText = "Restore",
                 Name = "btnRestore",
-                Text = "Restroe",
+                Text = "Restore",
                 UseColumnTextForButtonValue = true,
                 Width = 60
             };

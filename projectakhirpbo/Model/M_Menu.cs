@@ -15,8 +15,8 @@ namespace projectakhirpbo.Model
         public string nama_menu { get; set; }
         public int harga { get; set; }
         public int Dihapus { get; set; }
-        public int id_kategori { get; set; }
-        public string nama_kategori { get; set; }
+        //public int id_kategori { get; set; }
+        //public string nama_kategori { get; set; }
 
 
     }

@@ -116,7 +116,9 @@ namespace projectakhirpbo.View
         private void button4_Click(object sender, EventArgs e)
         {
             UserSession.ClearSession();
-            this.Close();
+            this.Hide();
+            login login = new login();
+            login.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
