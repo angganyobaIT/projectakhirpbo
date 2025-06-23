@@ -361,5 +361,49 @@ AND (m.status_reservasi = 'Selesai' or m.status_reservasi = 'Dibatalkan');
         //        return false;
         //    }
         //}
+        public static User Authenticate(string username, string password)
+        {
+            const string sql = @"
+            SELECT a.id_akun, a.id_role, c.id_customer
+            FROM akun a
+            LEFT JOIN customer c ON c.id_akun = a.id_akun
+            WHERE a.username = @username AND a.password = @password;
+        ";
+
+            using var conn = Database.GetConnection();
+            using var cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read())
+                return null;
+
+            int akunId = reader.GetInt32(reader.GetOrdinal("id_akun"));
+            int roleId = reader.GetInt32(reader.GetOrdinal("id_role"));
+            int? customerId = reader.IsDBNull(reader.GetOrdinal("id_customer"))
+                                ? null
+                                : reader.GetInt32(reader.GetOrdinal("id_customer"));
+
+            if (roleId == 1)
+            {
+                return new AdminUser(akunId, username);
+            }
+            else if (roleId == 2 && customerId.HasValue)
+            {
+                return new CustomerUser(akunId, username, customerId.Value);
+            }
+            else
+            {
+                return null;
+            }
+            //return roleId switch
+            //{
+            //    1 => new AdminUser(akunId, username),
+            //    2 when customerId.HasValue => new CustomerUser(akunId, username, customerId.Value),
+            //    _ => null
+            //};
+        }
     }
 }

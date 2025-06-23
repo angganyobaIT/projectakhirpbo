@@ -43,62 +43,88 @@ namespace projectakhirpbo
         {
             var username = tbusernamelog.Text.Trim();
             var password = tbpasswordlog.Text.Trim();
-            if (username == "" || password == "")
+            var user = UserController.Authenticate(username, password);
+            if (user is null)
             {
-                MessageBox.Show("Username dan password tidak boleh kosong", "Peringatan",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Username atau password salah", "Autentikasi Gagal",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            try
-            {
-                // out-parameters akan terisi kalau login berhasil
-                if (UserController.ValidateLogin(
-                        username, password,
-                        out var akunId,
-                        out var roleId,
-                        out var customerId))
-                {
-                    // Simpan ke session
-                    UserSession.CurrentUserId = akunId;
-                    UserSession.CurrentUsername = username;
-                    UserSession.CurrentRole = roleId;
-                    UserSession.CurrentCustomerId = customerId?? 0;
+            // Berhasil login
+            UserSession.CurrentUserId = user.Id;
+            UserSession.CurrentUsername = user.Username;
+            // Role dan CustomerId bisa disimpan di subclass jika diperlukan
+            if (user is CustomerUser cu)
+                UserSession.CurrentCustomerId = cu.CustomerId;
+            else
+                UserSession.CurrentCustomerId = 0;
 
-                    MessageBox.Show($"Selamat datang, {username}!", "Login Sukses",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Selamat datang, {user.Username}!", "Login Sukses",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Arahkan sesuai role
-                    if (roleId == 1)
-                    {
-                        new HomepageAdmin().Show();
-                    }
-                    else if (roleId == 2)
-                    {
-                        // kalau form UserHomepage butuh ID_customer:
-                        var userHome = new Homepage();
-                        userHome.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Role tidak dikenali.", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+            // Polimorfisme: tiap objek User tahu cara menampilkan halamannya
+            user.ShowHomepage();
 
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Username atau password salah", "Autentikasi Gagal",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.Hide();
+            //var username = tbusernamelog.Text.Trim();
+            //var password = tbpasswordlog.Text.Trim();
+            //if (username == "" || password == "")
+            //{
+            //    MessageBox.Show("Username dan password tidak boleh kosong", "Peringatan",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            //try
+            //{
+            //    // out-parameters akan terisi kalau login berhasil
+            //    if (UserController.ValidateLogin(
+            //            username, password,
+            //            out var akunId,
+            //            out var roleId,
+            //            out var customerId))
+            //    {
+            //        // Simpan ke session
+            //        UserSession.CurrentUserId = akunId;
+            //        UserSession.CurrentUsername = username;
+            //        UserSession.CurrentRole = roleId;
+            //        UserSession.CurrentCustomerId = customerId?? 0;
+
+            //        MessageBox.Show($"Selamat datang, {username}!", "Login Sukses",
+            //                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //        // Arahkan sesuai role
+            //        if (roleId == 1)
+            //        {
+            //            new HomepageAdmin().Show();
+            //        }
+            //        else if (roleId == 2)
+            //        {
+            //            // kalau form UserHomepage butuh ID_customer:
+            //            var userHome = new Homepage();
+            //            userHome.Show();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Role tidak dikenali.", "Error",
+            //                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            return;
+            //        }
+
+            //        this.Hide();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Username atau password salah", "Autentikasi Gagal",
+            //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error",
+            //                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
 
